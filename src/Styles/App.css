@@ -1,0 +1,44 @@
+.respect {
+  margin-top: -2rem;
+}
+
+.btn-text {
+  font-size: 11px;
+}
+.btn-text:hover {
+  transform: scale(1.05);
+}
+
+.text-small {
+  font-size: 11px;
+}
+
+.text-smaller {
+  font-size: 9px;
+}
+
+.mr--1 {
+  margin-right: -1rem;
+}
+
+.nav-icons {
+  @apply m-auto w-fit relative transition-all duration-100 ease-in animate-pulse;
+}
+.nav-icons > svg {
+  @apply text-blue-400;
+}
+.nav-icons:hover {
+  @apply bg-blue-50 rounded rounded-2xl [&>svg]:text-blue-700 cursor-pointer;
+}
+
+.round-new {
+  border-radius: 6px;
+}
+
+.hover\:animate-once:hover {
+  animation-iteration-count: 1;
+}
+
+.header-defaults {
+  @apply flex items-center pl-1 pr-2 cursor-pointer round-new transition-all ease-in-out hover:bg-zinc-100;
+}
