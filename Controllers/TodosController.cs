@@ -16,8 +16,6 @@ namespace Whatodo.Controllers
             _context = context;
         }
 
-
-
         // GET ALL TODOS
         [HttpGet]
         //public IEnumerable<string> Get() {  return new string[] { "value1", "value2" };}
@@ -56,7 +54,7 @@ namespace Whatodo.Controllers
             _context.Todos.Add(value);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetTodos), new { id = value.ID }, value);
+            return CreatedAtAction(nameof(GetTodos), new { id = value.ID }, value.Task);
         }
 
         // UPDATE VALUES
@@ -77,12 +75,12 @@ namespace Whatodo.Controllers
 
         // DELETE BY ID
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteTodo (int id)
+        public async Task<ActionResult> DeleteTodo(int id)
         {
             if (_context.Todos == null) { return NotFound(); }
-            var delTodo = await _context.Todos.FindAsync(id);   
-                if (delTodo == null) { return NotFound(); }
-                _context.Todos.Remove(delTodo);
+            var delTodo = await _context.Todos.FindAsync(id);
+            if (delTodo == null) { return NotFound(); }
+            _context.Todos.Remove(delTodo);
             await _context.SaveChangesAsync();
             return Ok();
         }

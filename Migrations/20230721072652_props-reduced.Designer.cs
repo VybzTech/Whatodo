@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Whatodo.Models;
 
@@ -10,9 +11,11 @@ using Whatodo.Models;
 namespace Whatodo.Migrations
 {
     [DbContext(typeof(TodosContext))]
-    partial class TodosContextModelSnapshot : ModelSnapshot
+    [Migration("20230721072652_props-reduced")]
+    partial class propsreduced
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
