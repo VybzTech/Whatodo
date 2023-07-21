@@ -13,9 +13,33 @@
 .text-smaller {
   font-size: 9px;
 }
-.mr--3 {
-  margin-right: -3rem;
+.mr--1 {
+  margin-right: -1rem;
 }
-.nav-icons{
-@apply m-auto w-fit relative [&>svg]:text-blue-400;
+// .mr--3 {
+//   margin-right: -3rem;
+// }
+.nav-icons {
+  @apply m-auto w-fit relative transition-all duration-100 ease-in animate-pulse;
+  & > svg {
+    @apply text-blue-400;
+  }
+  &:hover {
+    @apply bg-blue-50 rounded rounded-2xl [&>svg]:text-blue-700 cursor-pointer;
+  }
+}
+.round-new {
+  border-radius: 6px;
+}
+// .hover\:bg-slate-200:hover
+.hover\:animate-once:hover {
+  animation-iteration-count: 1;
+}
+// .whiten:hover {
+//   & > span {
+//     @apply text-gray-500;
+//   }
+// }
+.header-defaults {
+  @apply flex items-center pl-1 pr-2 cursor-pointer round-new transition-all ease-in-out hover:bg-zinc-100;
 }
