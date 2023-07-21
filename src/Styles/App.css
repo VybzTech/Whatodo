@@ -1,3 +1,26 @@
 .respect {
   margin-top: -2rem;
 }
+
+.btn-text {
+  font-size: 11px;
+}
+.btn-text:hover {
+  transform: scale(1.05);
+}
+
+.text-small {
+  font-size: 11px;
+}
+
+.text-smaller {
+  font-size: 9px;
+}
+
+.mr--3 {
+  margin-right: -3rem;
+}
+
+.nav-icons {
+  @apply m-auto w-fit relative [&>svg]:text-blue-400;
+}
