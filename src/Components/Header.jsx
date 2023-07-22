@@ -11,7 +11,7 @@ import FormFooter from "./FormFooter";
 const Header = () => {
   initTE({ Modal, Ripple });
 
-  const [modal, set] = useState(false);
+  // const [modal, set] = useState(false);
   const [task, setTask] = useState("");
   const [team, setTeam] = useState("");
   const [folder, setFolder] = useState("");
@@ -19,10 +19,10 @@ const Header = () => {
   const [edited, setEdited] = useState("");
   const [notes, setNotes] = useState("");
 
-  const activateClick = () => {
-    set((m) => !m);
-    console.log(modal ? "Modal Shown" : "Modal Closed");
-  };
+  // const activateClick = () => {
+  //   set((m) => !m);
+  //   console.log(modal ? "Modal Shown" : "Modal Closed");
+  // };
 
   const ClearForm = () => {
     setTask("");
@@ -31,8 +31,10 @@ const Header = () => {
     setCreated("");
     setEdited("");
     setNotes("");
+    console.log("All clear", task, team, folder, created, edited, notes);
   };
-
+  const today = new Date();
+  console.log(today);
   const data = { task };
 
   return (
@@ -44,7 +46,7 @@ const Header = () => {
           type="button"
           data-te-toggle="modal"
           data-te-target="#CreateTodoForm"
-          onClick={activateClick}
+          // onClick={activateClick}
           // data-modal-toggle="#CreateTodoForm"
           // data-te-ripple-init
           // data-te-ripple-color="light"
@@ -111,7 +113,16 @@ const Header = () => {
         heading={"Create New Todo"}
         body={
           <>
-            <Form  notes={notes} setNotes={setNotes} task={task} setTask={setTask} team={team} setTeam={setTeam} folder={folder} setFolder={setFolder} />
+            <Form
+              task={task}
+              setTask={setTask}
+              team={team}
+              setTeam={setTeam}
+              folder={folder}
+              setFolder={setFolder}
+              notes={notes}
+              setNotes={setNotes}
+            />
           </>
         }
         footer={
@@ -119,6 +130,7 @@ const Header = () => {
             <FormFooter data={data} clear={ClearForm} />
           </>
         }
+        closeFnc={ClearForm}
       />
     </div>
   );

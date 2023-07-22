@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 // Initialization for ES Users
 import { Select, initTE } from "tw-elements";
 
 const SelectComp = ({ name, list, val, change }) => {
+  useEffect(() => {}, [val]);
+
   initTE({ Select });
   return (
     <div className="w-80 mb-2.5">

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const Input = ({ name, change }) => {
+const Input = ({ name, val, change, placeholder }) => {
+  useEffect(() => {}, [val]);
   return (
     <div className="flex flex-col my-2">
       <label
@@ -17,8 +18,8 @@ const Input = ({ name, change }) => {
           change(e.target.value);
         }}
         name={name}
-        className="text-sm w-80 px-4 py-2 bg-white font-normal rounded rounded-md Capitalize border border-1.5 bg-gray-50 placeholder:opacity-40 placeholder:tracking-wide focus:outline-none"
-        placeholder="Enter Task description..."
+        className="text-sm w-80 px-4 py-2 bg-white font-normal rounded rounded-md Capitalize border border-1.5 bg-gray-50 placeholder:opacity-40 placeholder:tracking-wide focus:outline-none placeholder:text-small placeholder:tracking-xs"
+        placeholder={placeholder}
       />
     </div>
   );
