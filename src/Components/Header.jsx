@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Plus from "../Icons/Plus";
 import ChevronDown from "../Icons/ChevDown";
 import Funnel from "../Icons/Funnel";
 import ChevUpDown from "../Icons/ChevUpDown";
+import ModalTemp from "./ModalTemp";
+import Form from "./Form";
+import { Modal, Ripple, initTE } from "tw-elements";
 
 const Header = () => {
+  const [modal, set] = useState(false);
+  initTE({ Modal, Ripple });
+  const activateClick = () => {
+    set((m) => !m);
+    console.log(modal ? "Modal Shown" : "Modal Closed");
+  };
   return (
     <div className="container">
       {/* 1st FLOOR */}
       <div className="py-3 px-7 flex justify-between items-center">
-        <button className="flex items-center justify-between bg-transparent rounded-sm shadow-lg shadow-[0_2px_10px_0.5px_#aaa2] px-3.5 py-1 pt-1.5 uppercase text-slate-300 transition-all ease-in btn-text">
+        <button
+          className="flex items-center justify-between bg-transparent rounded-sm shadow-lg shadow-[0_1px_10px_0.5px_#aaa2] px-3.5 py-1 pt-1.5 uppercase text-slate-300 transition-all ease-in btn-text"
+          type="button"
+          data-te-toggle="modal"
+          data-te-target="#CreateTodoForm"
+          onClick={activateClick}
+          // data-modal-toggle="#CreateTodoForm"
+          // data-te-ripple-init
+          // data-te-ripple-color="light"
+        >
           <span className="[&>svg]:w-4 pr-2 ">
             <Plus />
           </span>
@@ -65,6 +83,17 @@ const Header = () => {
           </span>
         </div>
       </div>
+
+      {/* MODAL */}
+      <ModalTemp
+        id={"CreateTodoForm"}
+        heading={"Create New Todo"}
+        body={
+          <>
+            <Form />
+          </>
+        }
+      />
     </div>
   );
 };

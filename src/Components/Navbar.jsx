@@ -6,11 +6,7 @@ import img from "../Images/a40e4d1afec5e099a8d106cac45ac9ef.jpg";
 import pic from "../Images/e3c0b57e39b9038b5a33a28d7953f24d.jpg";
 const Navbar = () => {
   return (
-    <nav
-      className="Navbar flex bg-white shadow-neutral-100 px-8 py-2
-      items-center
-      justify-between"
-    >
+    <nav className="Navbar flex bg-white shadow-neutral-100 px-10 py-3.5 items-center justify-between">
       {/* LEFT SIDE */}
       <span>
         <h1 className="font-sans font-extrabold text-2xl capitalize text-zinc-800">
@@ -29,8 +25,10 @@ const Navbar = () => {
             className="text-xs w-48 font-semibold rounded rounded-xl p-1.5 placeholder:opacity-40 focus:outline-none"
             type="text"
             placeholder="Search Todos, Users, Folders..."
+            name="Search Todos"
             // placeholder="Track your Tasks here..."
           />
+
           <span className="nav-icons pl-1 ">
             <Search />
           </span>
@@ -42,7 +40,7 @@ const Navbar = () => {
           </p>
         </div>
         <img
-          class="w-8 mx-2.5 my-auto h-8 rounded-full shadow shadow-lg"
+          className="w-8 mx-2.5 my-auto h-8 rounded-full shadow shadow-lg"
           src={pic}
           alt="Rounded avatar"
         />
