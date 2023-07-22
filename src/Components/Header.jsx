@@ -6,20 +6,41 @@ import ChevUpDown from "../Icons/ChevUpDown";
 import ModalTemp from "./ModalTemp";
 import Form from "./Form";
 import { Modal, Ripple, initTE } from "tw-elements";
+import FormFooter from "./FormFooter";
 
 const Header = () => {
-  const [modal, set] = useState(false);
   initTE({ Modal, Ripple });
+
+  const [modal, set] = useState(false);
+  const [task, setTask] = useState("");
+  const [team, setTeam] = useState("");
+  const [folder, setFolder] = useState("");
+  const [created, setCreated] = useState("");
+  const [edited, setEdited] = useState("");
+  const [notes, setNotes] = useState("");
+
   const activateClick = () => {
     set((m) => !m);
     console.log(modal ? "Modal Shown" : "Modal Closed");
   };
+
+  const ClearForm = () => {
+    setTask("");
+    setTeam("");
+    setFolder("");
+    setCreated("");
+    setEdited("");
+    setNotes("");
+  };
+
+  const data = { task };
+
   return (
     <div className="container">
       {/* 1st FLOOR */}
       <div className="py-3 px-7 flex justify-between items-center">
         <button
-          className="flex items-center justify-between bg-transparent rounded-sm shadow-lg shadow-[0_1px_10px_0.5px_#aaa2] px-3.5 py-1 pt-1.5 uppercase text-slate-300 transition-all ease-in btn-text"
+          className="flex items-center justify-between bg-transparent rounded rounded-md shadow-lg shadow-[0_1px_10px_0.5px_#aaa2] px-3.5 py-1 pt-1.5 uppercase text-slate-300 transition-all ease-in btn-text"
           type="button"
           data-te-toggle="modal"
           data-te-target="#CreateTodoForm"
@@ -90,7 +111,12 @@ const Header = () => {
         heading={"Create New Todo"}
         body={
           <>
-            <Form />
+            <Form  notes={notes} setNotes={setNotes} task={task} setTask={setTask} team={team} setTeam={setTeam} folder={folder} setFolder={setFolder} />
+          </>
+        }
+        footer={
+          <>
+            <FormFooter data={data} clear={ClearForm} />
           </>
         }
       />

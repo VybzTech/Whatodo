@@ -44,7 +44,7 @@
 }
 
 option {
-  zoom: 1.2;
+  zoom: 1.1;
   height: 2rem !important;
   padding: 5px 0;
 }
@@ -61,10 +61,33 @@ option {
   @apply relative block rounded rounded-full bg-transparent px-2.5 py-1 text-lg text-neutral-600 transition-all duration-300 hover:bg-slate-200 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white leading-tight;
 }
 
+.tale {
+  @apply text-center;
+}
+
+.tale.sn {
+  @apply text-zinc-600 font-medium;
+}
+
 .tale.head {
-  @apply px-6 py-4;
+  @apply px-6 py-4 text-zinc-700;
 }
 
 .tale.data {
-  @apply px-6 py-4 whitespace-nowrap;
+  @apply px-4 py-3 mx-2 whitespace-nowrap;
+}
+
+.tale.data.word-tight {
+  word-spacing: -2px;
+}
+
+.tale.notes {
+  font-size: 0.85rem;
+  width: 12rem;
+  text-wrap: wrap;
+  line-height: 1.1;
+}
+
+.word-space {
+  word-spacing: 2px;
 }
