@@ -95,3 +95,8 @@ option {
 .word-space {
   word-spacing: 2px;
 }
+
+#portal {
+  position: absolute;
+  @apply top-0 left-0 w-full;
+}

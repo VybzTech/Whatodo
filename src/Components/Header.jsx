@@ -5,13 +5,14 @@ import Funnel from "../Icons/Funnel";
 import ChevUpDown from "../Icons/ChevUpDown";
 import ModalTemp from "./ModalTemp";
 import Form from "./Form";
-import { Modal, Ripple, initTE } from "tw-elements";
 import FormFooter from "./FormFooter";
 
-const Header = () => {
-  initTE({ Modal, Ripple });
+// import { Modal, Ripple, initTE } from "tw-elements";
 
-  // const [modal, set] = useState(false);
+const Header = () => {
+  // initTE({ Modal, Ripple });
+
+  const [showModal, setShowModal] = useState(true);
   const [task, setTask] = useState("");
   const [team, setTeam] = useState("");
   const [folder, setFolder] = useState("");
@@ -34,9 +35,10 @@ const Header = () => {
     console.log("All clear", task, team, folder, created, edited, notes);
   };
   const today = new Date();
-  console.log(today);
-  const data = { task };
+  // console.log(today);
+  // console.log(<span data-mdb-format="ddd, dd, mmm, yyyy">{today}</span>);
 
+  const data = { task, team, folder, created, edited, notes };
   return (
     <div className="container">
       {/* 1st FLOOR */}
@@ -44,9 +46,12 @@ const Header = () => {
         <button
           className="flex items-center justify-between bg-transparent rounded rounded-md shadow-lg shadow-[0_1px_10px_0.5px_#aaa2] px-3.5 py-1 pt-1.5 uppercase text-slate-300 transition-all ease-in btn-text"
           type="button"
-          data-te-toggle="modal"
-          data-te-target="#CreateTodoForm"
-          // onClick={activateClick}
+          // data-te-toggle="modal"
+          // data-te-target="#CreateTodoForm"
+          onClick={() => {
+            setShowModal((m) => !m);
+            console.log("Btn clicked");
+          }}
           // data-modal-toggle="#CreateTodoForm"
           // data-te-ripple-init
           // data-te-ripple-color="light"
@@ -59,6 +64,7 @@ const Header = () => {
         <p className="text-blue-700 text-bold font-semibold tracking-tight">
           Dashboard
         </p>
+        <span data-mdb-format="dd, mmm, yyyy">{today.toDateString()}</span>
       </div>
 
       {/* 2nd FLOOR */}
@@ -131,6 +137,8 @@ const Header = () => {
           </>
         }
         closeFnc={ClearForm}
+        showModal={showModal}
+        setShowModal={setShowModal}
       />
     </div>
   );
