@@ -14,13 +14,13 @@ option {
 }
 
 .tale {
-  @apply text-center;
+  @apply text-center ;
 }
 .tale.sn {
   @apply text-zinc-600 font-medium;
 }
 .tale.head {
-  @apply px-6 py-4 text-zinc-700;
+  @apply px-3 py-3 text-zinc-700;
 }
 .tale.data {
   @apply px-4 py-3 mx-2 whitespace-nowrap;
@@ -33,4 +33,7 @@ option {
   width: 14rem;
   text-wrap: wrap;
   line-height: 1.1;
+}
+.tale.row{
+   border: 10px solid rgb(241 245 249);
 }

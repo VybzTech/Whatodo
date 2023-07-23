@@ -9,8 +9,8 @@ const Table = () => {
       <div className="flex flex-col overflow-x-hidden">
         <div className="overflow-x-hidden sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-            <div className="overflow-hidden">
-              <table className="min-w-full text-center text-sm font-light">
+            <div className="overflow-hidden mx-4 ">
+              <table className="min-w-full text-center text-sm font-light rounded rounded-md">
                 <thead className="border-b font-medium dark:border-neutral-500">
                   <tr>
                     <th scope="col" className="tale head">
@@ -40,7 +40,7 @@ const Table = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="bg-white ">
+                  <tr className="tale row bg-white border rounded-xl mb-2 overflow-hidden">
                     <td className="tale data sn">1</td>
                     <td className="tale data">Recreate UI for Dashboard</td>
                     <td className="tale data notes">Otto, Mark, Thomas</td>
@@ -48,8 +48,9 @@ const Table = () => {
                     <td className="tale data word-tight">10 / 07 / 2023</td>
                     <td className="tale data word-tight">Today</td>
                     <td className="tale data notes">No notes...</td>
-                    <td className="tale data notes flex items-center m-auto p-1">
-                      <span className="">
+                    <td className="tale notes flex items-center px-0.5 py-6 justify-center m-auto w-fit">
+                    {/* <td className="tale data notes flex items-center m-auto p-1"> */}
+                      <span className="mr-2">
                         <Pen />
                       </span>
                       <span className="">
@@ -57,7 +58,7 @@ const Table = () => {
                       </span>
                     </td>
                   </tr>
-                  <tr className="bg-white border rounded rounded-lg m-2">
+                  <tr className="tale row bg-white border rounded rounded-xl m-2">
                     <td className="tale data sn">2</td>
                     <td className="tale data">Create backend for Website</td>
                     <td className="tale data notes">

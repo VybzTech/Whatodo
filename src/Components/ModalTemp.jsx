@@ -9,19 +9,25 @@ const ModalTemp = ({
   showModal,
   setShowModal,
 }) => {
+  if (showModal) {
+    document?.getElementById("portal").classList.add("sized");
+  } else {
+    document?.getElementById("portal").classList.remove("sized");
+  }
+
   return (
     <React.Fragment>
       {showModal
         ? ReactDOM.createPortal(
             <React.Fragment>
               <div
-                className="overflow-x-hidden outline-none bg-filter-blur-1 bg-opacity-50  backdrop-blur-sm bg-gray-200 backdrop-opacity-75"
-                // className="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none bg-filter-blur-1 bg-opacity-50 bg-neutral-800"
+                className="overflow-x-hidden overflow-y-auto outline-none bg-filter-blur-1 bg-opacity-50  backdrop-blur-sm bg-gray-200 backdrop-opacity-75"
+                // className="fixed left-0 top-0 z-[1055] hidden h-full  "
                 id={id}
                 aria-labelledby={`${id}Title`}
                 role="dialog"
               >
-                <div className="pt-12 w-auto transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px] min-h-[calc(100%-1rem)] translate-y-[-50px] items-center pointer-events-none">
+                <div className="pt-14 pb-8 w-auto transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px] min-h-[calc(100%-1rem)] translate-y-[-50px] items-center pointer-events-none">
                   <div className=" pointer-events-auto relative flex flex-col rounded-md border-none bg-white bg-clip-padding shadow-lg outline-none dark:bg-neutral-600">
                     <div className="p-4 flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-30  dark:border-opacity-50">
                       {/* <!--Modal title--> */}

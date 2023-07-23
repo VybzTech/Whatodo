@@ -74,7 +74,7 @@ option {
 }
 
 .tale.head {
-  @apply px-6 py-4 text-zinc-700;
+  @apply px-3 py-3 text-zinc-700;
 }
 
 .tale.data {
@@ -92,11 +92,18 @@ option {
   line-height: 1.1;
 }
 
+.tale.row {
+  border: 10px solid rgb(241, 245, 249);
+}
+
 .word-space {
   word-spacing: 2px;
 }
 
 #portal {
   position: absolute;
-  @apply top-0 left-0 w-full;
+  @apply top-0 left-0;
+}
+#portal.sized {
+  @apply w-full h-full;
 }
