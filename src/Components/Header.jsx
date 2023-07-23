@@ -8,13 +8,14 @@ import Form from "./Form";
 import FormFooter from "./FormFooter";
 
 const Header = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [task, setTask] = useState("");
   const [team, setTeam] = useState("");
   const [folder, setFolder] = useState("");
   const [created, setCreated] = useState("");
   const [edited, setEdited] = useState("");
   const [notes, setNotes] = useState("");
+  const [completed, setDone] = useState(false);
 
   const ClearForm = () => {
     setTask("");
@@ -25,8 +26,11 @@ const Header = () => {
     setNotes("");
   };
 
-  const today = new Date();
-  const data = { task, team, folder, created, edited, notes };
+  let date = new Date();
+  const today = `${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()}`;
+  const data = { task, team, folder, today, today, notes, completed };
 
   return (
     <div className="container">
@@ -47,7 +51,6 @@ const Header = () => {
         <p className="text-blue-700 text-bold font-semibold tracking-tight">
           Dashboard
         </p>
-        <span data-mdb-format="dd, mmm, yyyy">{today.toDateString()}</span>
       </div>
 
       {/* 2nd FLOOR */}
@@ -97,6 +100,7 @@ const Header = () => {
         body={
           <>
             <Form
+              date={today}
               task={task}
               setTask={setTask}
               team={team}
