@@ -7,11 +7,7 @@ import ModalTemp from "./ModalTemp";
 import Form from "./Form";
 import FormFooter from "./FormFooter";
 
-// import { Modal, Ripple, initTE } from "tw-elements";
-
 const Header = () => {
-  // initTE({ Modal, Ripple });
-
   const [showModal, setShowModal] = useState(true);
   const [task, setTask] = useState("");
   const [team, setTeam] = useState("");
@@ -20,11 +16,6 @@ const Header = () => {
   const [edited, setEdited] = useState("");
   const [notes, setNotes] = useState("");
 
-  // const activateClick = () => {
-  //   set((m) => !m);
-  //   console.log(modal ? "Modal Shown" : "Modal Closed");
-  // };
-
   const ClearForm = () => {
     setTask("");
     setTeam("");
@@ -32,13 +23,11 @@ const Header = () => {
     setCreated("");
     setEdited("");
     setNotes("");
-    console.log("All clear", task, team, folder, created, edited, notes);
   };
-  const today = new Date();
-  // console.log(today);
-  // console.log(<span data-mdb-format="ddd, dd, mmm, yyyy">{today}</span>);
 
+  const today = new Date();
   const data = { task, team, folder, created, edited, notes };
+
   return (
     <div className="container">
       {/* 1st FLOOR */}
@@ -46,15 +35,9 @@ const Header = () => {
         <button
           className="flex items-center justify-between bg-transparent rounded rounded-md shadow-lg shadow-[0_1px_10px_0.5px_#aaa2] px-3.5 py-1 pt-1.5 uppercase text-slate-300 transition-all ease-in btn-text"
           type="button"
-          // data-te-toggle="modal"
-          // data-te-target="#CreateTodoForm"
           onClick={() => {
             setShowModal((m) => !m);
-            console.log("Btn clicked");
           }}
-          // data-modal-toggle="#CreateTodoForm"
-          // data-te-ripple-init
-          // data-te-ripple-color="light"
         >
           <span className="[&>svg]:w-4 pr-2 ">
             <Plus />
@@ -69,9 +52,6 @@ const Header = () => {
 
       {/* 2nd FLOOR */}
       <div className="py-2 px-6 flex items-right justify-evenly w-72 ml-auto mr--1">
-        {/* <button className="bg-transparent rounded-sm shadow-lg shadow-neutral-200 px-3.5 py-1.5 uppercase text-slate-300 transition-all ease-in btn-text">
-  create todo
-</button> */}
         <div className="flex mr-2.5">
           <span className="header-defaults  hover:animate-pulse">
             <span className="[&>svg]:w-3.5 pr-0.5">
@@ -85,13 +65,11 @@ const Header = () => {
             <span className="text-gray-300 font-sans font-bold text-small capitalize">
               filter
             </span>
-
             <span className="[&>svg]:w-3.5 pl-1 text-gray-300 ">
               <Funnel />
             </span>
           </span>
         </div>
-
         <div className="flex mr-2.5">
           <span className="header-defaults  hover:animate-pulse">
             <span className="[&>svg]:w-3.5 pr-0.5">
@@ -101,7 +79,6 @@ const Header = () => {
               a-z
             </p>
           </span>
-
           <span className="header-defaults">
             <p className="uppercase tracking-tight text-gray-300 font-sans font-bold text-small ">
               sort
@@ -133,7 +110,11 @@ const Header = () => {
         }
         footer={
           <>
-            <FormFooter data={data} clear={ClearForm} />
+            <FormFooter
+              data={data}
+              clear={ClearForm}
+              setShowModal={setShowModal}
+            />
           </>
         }
         closeFnc={ClearForm}
@@ -143,5 +124,4 @@ const Header = () => {
     </div>
   );
 };
-
 export default Header;

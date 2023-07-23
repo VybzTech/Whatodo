@@ -2,14 +2,12 @@ import React from "react";
 import Pagination from "./Pagination";
 import Pen from "../Icons/Pen";
 import Trash from "../Icons/Trash";
-// Initialization for ES Users
 
 const Table = () => {
   return (
     <div>
       <div className="flex flex-col overflow-x-hidden">
         <div className="overflow-x-hidden sm:-mx-6 lg:-mx-8">
-          {/* <div className="inline-block w-full"> */}
           <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
             <div className="overflow-hidden">
               <table className="min-w-full text-center text-sm font-light">
@@ -42,7 +40,7 @@ const Table = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* <tr className="bg-white ">
+                  <tr className="bg-white ">
                     <td className="tale data sn">1</td>
                     <td className="tale data">Recreate UI for Dashboard</td>
                     <td className="tale data notes">Otto, Mark, Thomas</td>
@@ -58,7 +56,7 @@ const Table = () => {
                         <Trash />
                       </span>
                     </td>
-                  </tr> */}
+                  </tr>
                   <tr className="bg-white border rounded rounded-lg m-2">
                     <td className="tale data sn">2</td>
                     <td className="tale data">Create backend for Website</td>

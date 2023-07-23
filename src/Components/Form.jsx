@@ -29,11 +29,10 @@ const Form = ({
             />
           </ErrorPage>
           <div className="DOC pr-5 pb-2">
-            
-            {/* <p className="text-sm text-gray-500 mb-1.5">Date Created</p>
+            <p className="text-sm text-gray-500 mb-1.5">Date Created</p>
             <p className="text-xs italic text-gray-400 ml-auto mr-1.5">
               22/07/2023.
-            </p> */}
+            </p>
           </div>
         </div>
         <ErrorPage>
