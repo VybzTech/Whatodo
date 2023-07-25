@@ -1,23 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext,  useState } from "react";
 import Pagination from "./Pagination";
 import Pen from "../Icons/Pen";
 import Trash from "../Icons/Trash";
 import ModalTemp from "./ModalTemp";
-import axios from "axios";
+// import axios from "axios";
 import CDelete from "./CDelete";
+import Update from "./Update";
+import { AppContext } from "../AppContext";
 
-const Table = ({ AllTodos, get }) => {
-  // const dbLink = "https://localhost:7042/api/Todos/";
-  // const [AllTodos, setAllTodos] = useState([]);
+const Table = () => {
+  const [showUpdate, setShowUpdate] = useState(false);
   const [showCDel, setShowCDel] = useState(false);
   const [activeTask, set] = useState({});
-  const togDel = () => {
-    setShowCDel((del) => !del);
-  };
+  // const togDel = () => {
+  //   setShowCDel((del) => !del);
+  // };
+  // const togUpdate = () => {
+  //   setShowUpdate((upd) => !upd);
+  // };
+const [AllTodos,setAllTodos]=useContext(AppContext).Todos;
+  //  const [
+  //   task,
+  //   setTask,
+  //   team,
+  //   setTeam,
+  //   folder,
+  //   setFolder,
+  //   created,
+  //   setCreated,
+  //   edited,
+  //   setEdited,
+  //   notes,
+  //   setNotes,
+  //   completed,
+  //   setDone,
+  // ] = useContext(AppContext).FormData;
 
-  // useEffect(() => {
-  //   GetTodos();
-  // }, []);
 
   return (
     <div>
@@ -69,15 +87,18 @@ const Table = ({ AllTodos, get }) => {
                         <td className="tale data word-tight">{Task.edited}</td>
                         <td className="tale data notes">{Task.notes}</td>
                         <td className="tale notes flex items-center px-0.5 py-6 justify-center m-auto w-fit">
-                          <span className="tale actions">
+                          <span
+                            className="tale actions"
+                            onClick={() => {
+                              set(Task);setShowUpdate((upd) => !upd);
+                            }}
+                          >
                             <Pen />
                           </span>
                           <span
                             className="tale actions"
                             onClick={() => {
-                              set(Task);
-                              console.log("toggle");
-                              togDel();
+                              set(Task);setShowCDel((del) => !del);
                             }}
                           >
                             <Trash />
@@ -94,6 +115,9 @@ const Table = ({ AllTodos, get }) => {
                       <td className="py-8 font-bold text-md">
                         There are currently no Todos
                       </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
                   )}
                 </tbody>
@@ -103,15 +127,28 @@ const Table = ({ AllTodos, get }) => {
         </div>
       </div>
       <ModalTemp
+        id={"ConfirmUpdate"}
+        heading={"Update Todo"}
+        body={
+          <>
+            <Update tasked={activeTask} set={setShowUpdate}/>
+          </>
+        }
+        footer={<></>}
+        // closeFnc={togUpdate}
+        showModal={showUpdate}
+        setShowModal={setShowUpdate}
+      />
+      <ModalTemp
         id={"ConfirmDelete"}
         heading={"Do you want to continue ? "}
         body={
           <>
-            <CDelete tasked={activeTask} set={setShowCDel} get={get} />
+            <CDelete tasked={activeTask} set={setShowCDel}  />
           </>
         }
         footer={<></>}
-        closeFnc={togDel}
+        // closeFnc={togDel}
         showModal={showCDel}
         setShowModal={setShowCDel}
       />

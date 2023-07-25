@@ -14,14 +14,14 @@ const ModalTemp = ({
   } else {
     document?.getElementById("portal").classList.remove("sized");
   }
-
+  console.log(showModal);
   return (
     <React.Fragment>
       {showModal
         ? ReactDOM.createPortal(
             <React.Fragment>
               <div
-                className="h-full overflow-x-hidden overflow-y-auto outline-none bg-filter-blur-1 bg-opacity-50  backdrop-blur-sm bg-gray-200 backdrop-opacity-75"
+                className="portal h-full overflow-x-hidden overflow-y-auto outline-none bg-filter-blur-1 bg-opacity-50  backdrop-blur-sm bg-gray-200 backdrop-opacity-75"
                 // className="fixed left-0 top-0 z-[1055] hidden"
                 id={id}
                 aria-labelledby={`${id}Title`}
@@ -63,7 +63,6 @@ const ModalTemp = ({
                         </svg>
                       </button>
                     </div>
-
                     {/* <!--Modal body--> */}
                     <div className="relative">{body}</div>
                     {footer}

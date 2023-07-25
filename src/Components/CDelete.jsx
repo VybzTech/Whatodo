@@ -1,13 +1,18 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
+import { AppContext } from "../AppContext";
 
-const CDelete = ({ tasked, set, get }) => {
+const CDelete = ({ tasked, set }) => {
+  // const [AllTodos, setAllTodos] = useContext(AppContext).Todos;
+  const Get = useContext(AppContext).get;
+  const dbLink = useContext(AppContext).link;
+
   console.log(tasked);
-  const dbLink = `https://localhost:7042/api/Todos/${tasked.id}`;
-  const DeleteTodo = (id) => {
+  // const dbLink = `https://localhost:7042/api/Todos/${tasked.id}`;
+  const DeleteTodo = () => {
     axios
-      .delete(dbLink)
+      .delete(dbLink + `${tasked.id}/`)
       .then((res) => {
         if (res.status === 200) {
           console.log(res);
@@ -19,7 +24,7 @@ const CDelete = ({ tasked, set, get }) => {
           });
           setTimeout(() => {
             set((m) => !m);
-            get();
+            Get();
           }, 750);
         }
       })
@@ -33,30 +38,15 @@ const CDelete = ({ tasked, set, get }) => {
       <div className="flex justify-between items-center px-2.5 py-4">
         <button
           onClick={() => DeleteTodo()}
-          className="ml-1 
-      inline-block
-       rounded
-        bg-red-400
-       px-6
-        pb-2 w-full
-         pt-2.5
-          text-xs
-           font-medium 
-           uppercase
-            leading-normal
-             text-white
-              shadow-[0_4px_9px_-4px_#316FD3] 
-       transition duration-150 ease-in-out 
-       hover:bg-red-600 
-       hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
-       focus:bg-red-600 
-       focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
-       focus:outline-none focus:ring-0 
-       active:bg-red-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
-       dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)]
-        dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] 
-       dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] 
-       dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+          className="ml-1 inline-block rounded bg-red-400 px-6
+        pb-2 w-full pt-2.5 text-xs font-medium uppercase leading-normal
+      text-white shadow-[0_4px_9px_-4px_#FE3221] transition duration-150 ease-in-out 
+       hover:bg-red-600 hover:shadow-[0_8px_9px_-4px_rgba(209,33,20,0.3),0_4px_18px_0_rgba(209,33,20,0.2)] 
+       focus:bg-red-600 focus:shadow-[0_8px_9px_-4px_rgba(209,33,20,0.3),0_4px_18px_0_rgba(209,33,20,0.2)] 
+       focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-[0_8px_9px_-4px_rgba(209,33,20,0.3),0_4px_18px_0_rgba(209,33,20,0.2)] 
+       dark:shadow-[0_4px_9px_-4px_rgba(209,33,20,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(209,33,20,0.2),0_4px_18px_0_rgba(221,33,20,0.1)] 
+       dark:focus:shadow-[0_8px_9px_-4px_rgba(209,33,20,0.2),0_4px_18px_0_rgba(209,33,20,0.1)] 
+       dark:active:shadow-[0_8px_9px_-4px_rgba(209,33,20,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
         >
           Yes
         </button>

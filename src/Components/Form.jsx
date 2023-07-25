@@ -1,21 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import Input from "./Input";
 import SelectComp from "./Select";
 import ErrorPage from "./ErrorHandler";
+import { AppContext } from "../AppContext";
 
 const Form = ({
   date,
-  task,
-  setTask,
-  team,
-  setTeam,
-  folder,
-  setFolder,
-  notes,
-  setNotes,
+  // task,
+  // setTask,
+  // team,
+  // setTeam,
+  // folder,
+  // setFolder,
+  // notes,
+  // setNotes,
 }) => {
-  const Teams = ["software", "hardware", "admin", "network", "social"];
-  const Folders = ["Web Dev", "Disc Jockey", "App Dev"];
+  
+  const [
+    task,
+    setTask,
+    team,
+    setTeam,
+    folder,
+    setFolder,
+    created,
+    setCreated,
+    edited,
+    setEdited,
+    notes,
+    setNotes,
+    completed,
+    setDone,
+  ] = useContext(AppContext).FormData;
+
+  var Teams= useContext(AppContext).TeamList;
+  var Folders= useContext(AppContext).FolderList;
 
   return (
     <div className="bg-slate-50 px-5 p-4">

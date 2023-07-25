@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import Plus from "../Icons/Plus";
 import ChevronDown from "../Icons/ChevDown";
 import Funnel from "../Icons/Funnel";
@@ -7,33 +7,37 @@ import ModalTemp from "./ModalTemp";
 import Form from "./Form";
 import FormFooter from "./FormFooter";
 
-const Header = ({ get }) => {
+const Header = () => {
   const [showModal, setShowModal] = useState(false);
-  const [task, setTask] = useState("");
-  const [team, setTeam] = useState("");
-  const [folder, setFolder] = useState("");
-  const [created, setCreated] = useState("");
-  const [edited, setEdited] = useState("");
-  const [notes, setNotes] = useState("");
-  const [completed, setDone] = useState(false);
+  // const [task, setTask] = useState("");
+  // const [team, setTeam] = useState("");
+  // const [folder, setFolder] = useState("");
+  // const [created, setCreated] = useState("");
+  // const [edited, setEdited] = useState("");
+  // const [notes, setNotes] = useState("");
+  // const [completed, setDone] = useState(false);
 
-  const ClearForm = () => {
-    setTask("");
-    setTeam("");
-    setFolder("");
-    setCreated("");
-    setEdited("");
-    setNotes("");
-  };
+  // const ClearForm = () => {
+  //   setTask("");
+  //   setTeam("");
+  //   setFolder("");
+  //   setCreated("");
+  //   setEdited("");
+  //   setNotes("");
+  // };
+
+  // const { Todos,FormData,link } = useContext(AppContext);
+
+  // console.log(Todos[0]);
 
   let date = new Date();
   const today = `${date.getDate()}/${
     date.getMonth() + 1
   }/${date.getFullYear()}`;
-  const todey = `${date.getDate()}/${
-    date.getMonth() + 1
-  }/${date.getFullYear()}`;
-  const data = { task, team, folder, today, todey, notes, completed };
+  // const todey = `${date.getDate()}/${
+  //   date.getMonth() + 2
+  // }/${date.getFullYear()}`;
+  // const data = { task, team, folder, today, todey, notes, completed }=;
 
   return (
     <div className="container">
@@ -104,25 +108,25 @@ const Header = ({ get }) => {
           <>
             <Form
               date={today}
-              task={task}
-              setTask={setTask}
-              team={team}
-              setTeam={setTeam}
-              folder={folder}
-              setFolder={setFolder}
-              notes={notes}
-              setNotes={setNotes}
+              // task={task}
+              // setTask={setTask}
+              // team={team}
+              // setTeam={setTeam}
+              // folder={folder}
+              // setFolder={setFolder}
+              // notes={notes}
+              // setNotes={setNotes}
             />
           </>
         }
         footer={
           <>
             <FormFooter
-              data={data}
-              clear={ClearForm}
-              showModal={showModal}
-              setShowModal={setShowModal}
-              get={get}
+              // data={data}
+              // clear={ClearForm}
+              // showModal={showModal}
+              // setShowModal={setShowModal}
+              // get={get}
             />
           </>
         }

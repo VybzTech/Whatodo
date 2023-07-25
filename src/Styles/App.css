@@ -83,16 +83,19 @@ option {
 }
 
 .tale.head.tight {
-  width: 2rem;
-  max-width: 2rem;
+  width: 3.5rem;
+  max-width: 5rem;
 }
 
 .tale.data {
   @apply px-4 py-3 mx-2 whitespace-nowrap;
 }
 
+.tale.actions {
+  width: 3.5rem;
+}
 .tale.actions > svg {
-  @apply text-slate-400 w-5 h-5;
+  @apply text-slate-400 w-5 h-5 transition-all ease-in-out;
 }
 .tale.actions > svg:first-child {
   @apply mr-2;
@@ -114,7 +117,7 @@ option {
 
 .tale.notes {
   font-size: 0.85rem;
-  width: 14rem;
+  width: 12rem;
   text-wrap: wrap;
   line-height: 1.1;
 }
@@ -123,18 +126,15 @@ option {
   border: 10px solid rgb(241, 245, 249);
 }
 
-.span2 {
-  grid-column: span 2;
-}
-
 .word-space {
   word-spacing: 2px;
 }
 
 #portal {
   position: absolute;
-  @apply top-0 left-0;
+  @apply top-0 left-0 w-full;
 }
-#portal.sized {
-  @apply w-full h-full;
+
+.portal {
+  height: 100vh;
 }
