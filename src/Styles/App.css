@@ -82,6 +82,11 @@ option {
   @apply px-3 py-3 text-zinc-700;
 }
 
+.tale.head.tight {
+  width: 2rem;
+  max-width: 2rem;
+}
+
 .tale.data {
   @apply px-4 py-3 mx-2 whitespace-nowrap;
 }

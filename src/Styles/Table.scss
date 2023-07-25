@@ -1,6 +1,6 @@
-
-table{
-  max-height: 30vh;overflow-y: auto;
+table {
+  max-height: 30vh;
+  overflow-y: auto;
 }
 option {
   zoom: 1.1;
@@ -25,6 +25,10 @@ option {
 }
 .tale.head {
   @apply px-3 py-3 text-zinc-700;
+}
+.tale.head.tight {
+  width: 2rem;
+  max-width: 2rem;
 }
 .tale.data {
   @apply px-4 py-3 mx-2 whitespace-nowrap;
@@ -60,4 +64,6 @@ option {
 .tale.row {
   border: 10px solid rgb(241 245 249);
 }
-.span2{grid-column: span 2;}
+.span2 {
+  grid-column: span 2;
+}

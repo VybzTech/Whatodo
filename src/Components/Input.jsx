@@ -20,6 +20,7 @@ const Input = ({ name, val, change, placeholder }) => {
         name={name}
         className="text-sm w-80 px-4 py-2 bg-white font-normal rounded rounded-md Capitalize border border-1.5 bg-gray-50 placeholder:opacity-40 placeholder:tracking-wide focus:outline-none placeholder:text-small placeholder:tracking-xs"
         placeholder={placeholder}
+        value={val}
       />
     </div>
   );

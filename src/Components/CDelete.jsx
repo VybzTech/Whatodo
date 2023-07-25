@@ -1,24 +1,38 @@
 import axios from "axios";
 import React from "react";
+import { toast } from "react-hot-toast";
 
-const CDelete = ({ tasked, set }) => {
-    console.log(tasked)
-    const dbLink = `https://localhost:7042/api/Todos/${tasked.id}`;
-    const DeleteTodo=(id)=>{
-        axios.delete(dbLink).then(res=>{if(res.status===200){console.log(res)
-            // Show successful delete modal 
-            //// Run get data here
-           setTimeout(() => {
-            set((m) => !m)
-           }, 750); }}).catch(e=>console.log(e,e.name))
-    }
+const CDelete = ({ tasked, set, get }) => {
+  console.log(tasked);
+  const dbLink = `https://localhost:7042/api/Todos/${tasked.id}`;
+  const DeleteTodo = (id) => {
+    axios
+      .delete(dbLink)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res);
+          toast.success("Successfully deleted Task!", {
+            iconTheme: {
+              primary: "#ff3333",
+              secondary: "#FFFAEE",
+            },
+          });
+          setTimeout(() => {
+            set((m) => !m);
+            get();
+          }, 750);
+        }
+      })
+      .catch((e) => console.log(e, e.name));
+  };
   return (
     <>
       <h3 className=" font-semibold text-lg mx-7 my-4 tracking-tight span2 w-full">
-        Delete {tasked.task}
+        Delete Todo: {tasked.task}
       </h3>
       <div className="flex justify-between items-center px-2.5 py-4">
-        <button onClick={()=>{}}
+        <button
+          onClick={() => DeleteTodo()}
           className="ml-1 
       inline-block
        rounded

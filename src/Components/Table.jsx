@@ -6,7 +6,7 @@ import ModalTemp from "./ModalTemp";
 import axios from "axios";
 import CDelete from "./CDelete";
 
-const Table = ({ AllTodos }) => {
+const Table = ({ AllTodos, get }) => {
   // const dbLink = "https://localhost:7042/api/Todos/";
   // const [AllTodos, setAllTodos] = useState([]);
   const [showCDel, setShowCDel] = useState(false);
@@ -28,10 +28,10 @@ const Table = ({ AllTodos }) => {
               <table className=" min-w-full text-center text-sm font-light rounded rounded-md">
                 <thead className="border-b font-medium dark:border-neutral-500">
                   <tr>
-                    <th scope="col" className="tale head">
+                    <th scope="col" className="tale head tight">
                       S/N
                     </th>
-                    <th scope="col" className="tale head">
+                    <th scope="col" className="tale head notes">
                       Task
                     </th>
                     <th scope="col" className="tale head">
@@ -40,16 +40,16 @@ const Table = ({ AllTodos }) => {
                     <th scope="col" className="tale head">
                       Folder
                     </th>
-                    <th scope="col" className="tale head">
+                    <th scope="col" className="tale head word-tight">
                       Date Created
                     </th>
-                    <th scope="col" className="tale head">
-                      Edited
+                    <th scope="col" className="tale head word-tight">
+                      Date Edited
                     </th>
-                    <th scope="col" className="tale head">
+                    <th scope="col" className="tale head notes">
                       Notes
                     </th>
-                    <th scope="col" className="tale head">
+                    <th scope="col" className="tale head notes">
                       Actions
                     </th>
                   </tr>
@@ -64,7 +64,7 @@ const Table = ({ AllTodos }) => {
                         <td className="tale data sn">{id + 1}.</td>
                         <td className="tale data">{Task.task}</td>
                         <td className="tale data notes">{Task.team}</td>
-                        <td className="tale data">folder</td>
+                        <td className="tale data">{Task.folder}</td>
                         <td className="tale data word-tight">{Task.created}</td>
                         <td className="tale data word-tight">{Task.edited}</td>
                         <td className="tale data notes">{Task.notes}</td>
@@ -86,7 +86,15 @@ const Table = ({ AllTodos }) => {
                       </tr>
                     ))
                   ) : (
-                    <tr>There are currently no Todos</tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td className="py-8 font-bold text-md">
+                        There are currently no Todos
+                      </td>
+                    </tr>
                   )}
                 </tbody>
               </table>
@@ -99,7 +107,7 @@ const Table = ({ AllTodos }) => {
         heading={"Do you want to continue ? "}
         body={
           <>
-            <CDelete tasked={activeTask} set={setShowCDel} />
+            <CDelete tasked={activeTask} set={setShowCDel} get={get} />
           </>
         }
         footer={<></>}
