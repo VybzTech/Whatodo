@@ -9,7 +9,7 @@ const Form = ({
   setTask,
   team,
   setTeam,
-  folders,
+  folder,
   setFolder,
   notes,
   setNotes,
@@ -38,12 +38,13 @@ const Form = ({
         </div>
         <ErrorPage>
           <SelectComp name="Team" list={Teams} val={team} change={setTeam} />
+          {/* <SelectComp name="Team" list={Teams} val={team} change={setTeam} multiple={true}/> */}
         </ErrorPage>
         <ErrorPage>
           <SelectComp
             name="Folder"
             list={Folders}
-            val={folders}
+            val={folder}
             change={setFolder}
           />
         </ErrorPage>

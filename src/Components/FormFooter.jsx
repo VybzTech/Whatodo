@@ -1,8 +1,10 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
- 
-const FormFooter = ({ data, clear, setShowModal }) => {
+
+const FormFooter = ({ data, clear, showModal, setShowModal, get }) => {
+  useEffect(() => {}, [showModal]);
+
   const SendForm = () => {
     if (data.task === "" || data.task === " ") {
       //SHOW TOAST OF EMPTY TASKNAME
@@ -24,28 +26,32 @@ const FormFooter = ({ data, clear, setShowModal }) => {
       });
       return;
     }
-
-    // toast.promise("Adding Task...");
-
+    console.log(data);
+    //finding folder issue, created, edited
     const dbLink = "https://localhost:7042/api/Todos/";
     axios
-      .get(dbLink, data)
+      .post(dbLink, data)
       .then((res) => {
         // Show toast of successful Entry, clear the Form timeout & close...
         toast.success("Successfully added Todo");
-        console.log("Success", res);
-        
+        setTimeout(() => {
+          clear();
+          setTimeout(
+            setShowModal((m) => !m),
+            500
+          );
+          // Run GetTodos here !!
+          get();
+        }, 1500);
       })
       .catch((e) => {
         //SHOW ERROR MODAL
         console.log(e, e.name);
       });
-    // data
     console.log(data);
   };
   return (
     <div className="flex p-4 mx-6 mb-4 flex-shrink-0 flex-wrap items-center justify-between rounded-b-md border-t-2 border-neutral-100 border-opacity-50 dark:border-opacity-50">
-      {/* <!--Modal footer--> */}
       <Toaster position="top-right" reverseOrder={false} />
       <button
         type="button"
@@ -53,7 +59,6 @@ const FormFooter = ({ data, clear, setShowModal }) => {
           clear();
           setShowModal((m) => !m);
         }}
-        // shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
         className="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
         data-te-modal-dismiss
       >

@@ -5,7 +5,7 @@ const ModalTemp = ({
   heading,
   body,
   footer,
-  closeFnc,
+  // closeFnc,
   showModal,
   setShowModal,
 }) => {
@@ -21,8 +21,8 @@ const ModalTemp = ({
         ? ReactDOM.createPortal(
             <React.Fragment>
               <div
-                className="overflow-x-hidden overflow-y-auto outline-none bg-filter-blur-1 bg-opacity-50  backdrop-blur-sm bg-gray-200 backdrop-opacity-75"
-                // className="fixed left-0 top-0 z-[1055] hidden h-full  "
+                className="h-full overflow-x-hidden overflow-y-auto outline-none bg-filter-blur-1 bg-opacity-50  backdrop-blur-sm bg-gray-200 backdrop-opacity-75"
+                // className="fixed left-0 top-0 z-[1055] hidden"
                 id={id}
                 aria-labelledby={`${id}Title`}
                 role="dialog"
@@ -40,10 +40,10 @@ const ModalTemp = ({
                       {/* <!--Close button--> */}
                       <button
                         type="button"
-                        className="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                        className="box-content rounded-none border-none p-1 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
                         aria-label="Close"
                         onClick={() => {
-                          closeFnc();
+                          // closeFnc();
                           setShowModal((m) => !m);
                         }}
                       >

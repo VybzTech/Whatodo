@@ -1,3 +1,7 @@
+
+table{
+  max-height: 30vh;overflow-y: auto;
+}
 option {
   zoom: 1.1;
   height: 2rem !important;
@@ -14,7 +18,7 @@ option {
 }
 
 .tale {
-  @apply text-center ;
+  @apply text-center;
 }
 .tale.sn {
   @apply text-zinc-600 font-medium;
@@ -25,6 +29,25 @@ option {
 .tale.data {
   @apply px-4 py-3 mx-2 whitespace-nowrap;
 }
+.tale.actions {
+  & > svg {
+    @apply text-slate-400 w-5 h-5;
+    &:first-child {
+      @apply mr-2;
+    }
+  }
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    // @apply zoom-1.1;
+    & > svg {
+      @apply text-blue-600;
+    }
+  }
+  &:last-child:hover > svg {
+    @apply text-red-600;
+  }
+}
 .tale.data.word-tight {
   word-spacing: -2px;
 }
@@ -34,6 +57,7 @@ option {
   text-wrap: wrap;
   line-height: 1.1;
 }
-.tale.row{
-   border: 10px solid rgb(241 245 249);
+.tale.row {
+  border: 10px solid rgb(241 245 249);
 }
+.span2{grid-column: span 2;}

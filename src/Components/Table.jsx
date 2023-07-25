@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Pagination from "./Pagination";
 import Pen from "../Icons/Pen";
 import Trash from "../Icons/Trash";
+import ModalTemp from "./ModalTemp";
+import axios from "axios";
+import CDelete from "./CDelete";
 
-const Table = () => {
+const Table = ({ AllTodos }) => {
+  // const dbLink = "https://localhost:7042/api/Todos/";
+  // const [AllTodos, setAllTodos] = useState([]);
+  const [showCDel, setShowCDel] = useState(false);
+  const [activeTask, set] = useState({});
+  const togDel = () => {
+    setShowCDel((del) => !del);
+  };
+
+  // useEffect(() => {
+  //   GetTodos();
+  // }, []);
+
   return (
     <div>
       <div className="flex flex-col overflow-x-hidden">
         <div className="overflow-x-hidden sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
             <div className="overflow-hidden mx-4 ">
-              <table className="min-w-full text-center text-sm font-light rounded rounded-md">
+              <table className=" min-w-full text-center text-sm font-light rounded rounded-md">
                 <thead className="border-b font-medium dark:border-neutral-500">
                   <tr>
                     <th scope="col" className="tale head">
@@ -40,52 +55,58 @@ const Table = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="tale row bg-white border rounded-xl mb-2 overflow-hidden">
-                    <td className="tale data sn">1</td>
-                    <td className="tale data">Recreate UI for Dashboard</td>
-                    <td className="tale data notes">Otto, Mark, Thomas</td>
-                    <td className="tale data">Designs</td>
-                    <td className="tale data word-tight">10 / 07 / 2023</td>
-                    <td className="tale data word-tight">Today</td>
-                    <td className="tale data notes">No notes...</td>
-                    <td className="tale notes flex items-center px-0.5 py-6 justify-center m-auto w-fit">
-                    {/* <td className="tale data notes flex items-center m-auto p-1"> */}
-                      <span className="mr-2">
-                        <Pen />
-                      </span>
-                      <span className="">
-                        <Trash />
-                      </span>
-                    </td>
-                  </tr>
-                  <tr className="tale row bg-white border rounded rounded-xl m-2">
-                    <td className="tale data sn">2</td>
-                    <td className="tale data">Create backend for Website</td>
-                    <td className="tale data notes">
-                      Thornton, David, Mike, Tanya, Chris, Lizzy
-                    </td>
-                    <td className="tale data">Web Dev</td>
-                    <td className="tale data word-tight">12 / 07 / 2023</td>
-                    <td className="tale data word-tight">20 / 07 / 2023</td>
-                    <td className="tale data notes">
-                      Some components in the todos controller needs editing
-                      before initializing the DB.
-                    </td>
-                    <td className="tale notes flex items-center px-0.5 py-6 justify-center m-auto w-fit">
-                      <span className="mr-2">
-                        <Pen />
-                      </span>
-                      <span className="">
-                        <Trash />
-                      </span>
-                    </td>
-                  </tr>
+                  {AllTodos.length !== 0 ? (
+                    AllTodos?.map((Task, id) => (
+                      <tr
+                        key={id}
+                        className="tale row bg-white border rounded-xl mb-2 overflow-hidden"
+                      >
+                        <td className="tale data sn">{id + 1}.</td>
+                        <td className="tale data">{Task.task}</td>
+                        <td className="tale data notes">{Task.team}</td>
+                        <td className="tale data">folder</td>
+                        <td className="tale data word-tight">{Task.created}</td>
+                        <td className="tale data word-tight">{Task.edited}</td>
+                        <td className="tale data notes">{Task.notes}</td>
+                        <td className="tale notes flex items-center px-0.5 py-6 justify-center m-auto w-fit">
+                          <span className="tale actions">
+                            <Pen />
+                          </span>
+                          <span
+                            className="tale actions"
+                            onClick={() => {
+                              set(Task);
+                              console.log("toggle");
+                              togDel();
+                            }}
+                          >
+                            <Trash />
+                          </span>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>There are currently no Todos</tr>
+                  )}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
+      <ModalTemp
+        id={"ConfirmDelete"}
+        heading={"Do you want to continue ? "}
+        body={
+          <>
+            <CDelete tasked={activeTask} set={setShowCDel} />
+          </>
+        }
+        footer={<></>}
+        closeFnc={togDel}
+        showModal={showCDel}
+        setShowModal={setShowCDel}
+      />
       <Pagination />
     </div>
     //   secondary -  className="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">

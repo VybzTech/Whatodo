@@ -7,7 +7,7 @@ import ModalTemp from "./ModalTemp";
 import Form from "./Form";
 import FormFooter from "./FormFooter";
 
-const Header = () => {
+const Header = ({ get }) => {
   const [showModal, setShowModal] = useState(false);
   const [task, setTask] = useState("");
   const [team, setTeam] = useState("");
@@ -30,7 +30,10 @@ const Header = () => {
   const today = `${date.getDate()}/${
     date.getMonth() + 1
   }/${date.getFullYear()}`;
-  const data = { task, team, folder, today, today, notes, completed };
+  const todey = `${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()}`;
+  const data = { task, team, folder, today, todey, notes, completed };
 
   return (
     <div className="container">
@@ -117,11 +120,13 @@ const Header = () => {
             <FormFooter
               data={data}
               clear={ClearForm}
+              showModal={showModal}
               setShowModal={setShowModal}
+              get={get}
             />
           </>
         }
-        closeFnc={ClearForm}
+        // closeFnc={ClearForm}
         showModal={showModal}
         setShowModal={setShowModal}
       />
