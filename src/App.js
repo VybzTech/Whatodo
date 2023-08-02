@@ -9,14 +9,11 @@ import { Toaster, toast } from "react-hot-toast";
 import { AppContext } from "./AppContext";
 
 function App() {
-  // const [first, setfirst] = useState()
   const [AllTodos, setAllTodos] = useState([]);
-  // const [showModal, setShowModal] = useState(false);
   const [task, setTask] = useState("");
   const [team, setTeam] = useState("");
   const [folder, setFolder] = useState("");
   const [created, setCreated] = useState("");
-  const [edited, setEdited] = useState("");
   const [notes, setNotes] = useState("");
   const [completed, setDone] = useState(false);
   const Teams = ["Software", "Hardware", "Admin", "Network", "Social"];
@@ -52,7 +49,6 @@ function App() {
     setTeam("");
     setFolder("");
     setCreated("");
-    setEdited("");
     setNotes("");
   };
 
@@ -72,8 +68,6 @@ function App() {
               setFolder,
               created,
               setCreated,
-              edited,
-              setEdited,
               notes,
               setNotes,
               completed,
@@ -82,14 +76,12 @@ function App() {
             link: dbLink,
             clear: ClearForm,
             get: GetTodos,
-            TeamList:Teams,
-            FolderList:Folders
+            TeamList: Teams,
+            FolderList: Folders,
           }}
         >
           <Navbar />
-          <Header
-          // get={GetTodos}
-          />
+          <Header />
           <Table />
         </AppContext.Provider>
       </div>

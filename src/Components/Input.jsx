@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 
 const Input = ({ name, val, change, placeholder }) => {
-  useEffect(() => {}, [val]);
-  // console.log(name, val, change);
+  // useEffect(() => {}, [val]);
   return (
     <div className="flex flex-col mb-4">
       <label

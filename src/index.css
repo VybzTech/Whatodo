@@ -18,6 +18,6 @@ code {
 }
 
 /* SUPER CLASSES */
-.Vinput{
-@apply px-4 py-2 border-solid border-gray-300 rounded-lg focus:outline-none focus:shadow-md;
+.Vinput {
+  @apply px-4 py-2 border-solid border-gray-300 rounded-lg focus:outline-none focus:shadow-md;
 }

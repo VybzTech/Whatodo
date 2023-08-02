@@ -7,22 +7,6 @@ import ErrorPage from "./ErrorHandler";
 import SelectComp from "./Select";
 
 const Update = ({ tasked , updateInfo}) => {
-  // const [
-  //   task,
-  //   setTask,
-  //   team,
-  //   setTeam,
-  //   folder,
-  //   setFolder,
-  //   created,
-  //   setCreated,
-  //   edited,
-  //   setEdited,
-  //   notes,
-  //   setNotes,
-  //   completed,
-  //   setDone,
-
   
   const { task, team, folder, created, edited, notes, completed } = tasked;
   const { newTask, setNewTask
@@ -35,7 +19,6 @@ const Update = ({ tasked , updateInfo}) => {
 
   var Teams = useContext(AppContext).TeamList;
   var Folders = useContext(AppContext).FolderList;
-  // console.log(setTask);
   useEffect(() => {
     setNewTask(task);
     setNewTeam(team);
@@ -46,9 +29,6 @@ const Update = ({ tasked , updateInfo}) => {
     setNewCompleted(completed);
   }, [tasked]);
 
-
-
-  
   return (
     <div className="bg-slate-50 px-5 p-4">
       <form>

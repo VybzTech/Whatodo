@@ -1,36 +1,10 @@
 import axios from "axios";
-import React, { useContext, useEffect } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AppContext } from "../AppContext";
 
 const FormFooter = ({ setShowModal }) => {
-  // { data, clear, showModal, setShowModal, get }
-
-  // value={{
-  //   Todos: [AllTodos, setAllTodos],
-  //   FormData: [
-  //     task,
-  //     setTask,
-  //     team,
-  //     setTeam,
-  //     folder,
-  //     setFolder,
-  //     created,
-  //     setCreated,
-  //     edited,
-  //     setEdited,
-  //     notes,
-  //     setNotes,
-  //     completed,
-  //     setDone,
-  //   ],
-  //   link: dbLink,
-  //   clear: ClearForm,
-  //   get: GetTodos,
-  //   TeamList:Teams,
-  //   FolderList:Folders
-  // }}
-
+ 
   const [
     task,
     setTask,
@@ -40,8 +14,6 @@ const FormFooter = ({ setShowModal }) => {
     setFolder,
     created,
     setCreated,
-    edited,
-    setEdited,
     notes,
     setNotes,
     completed,
@@ -77,27 +49,29 @@ const FormFooter = ({ setShowModal }) => {
       });
       return;
     }
-    console.log(task, team, folder, created, edited, notes, completed);
+    // Test New application, Network, Disc Jockey, 2023-08-02,  Try other e bugs, maybe come back to finish dem things and dump th false
+
+    console.log(task, team, folder, created, notes, completed);
     //finding  created, edited
-    axios
-      .post(dbLink, { task, team, folder, created, edited, notes, completed })
-      .then((res) => {
-        // Show toast of successful Entry, clear the Form timeout & close...
-        toast.success("Successfully added Todo");
-        setTimeout(() => {
-          clear();
-          setTimeout(
-            setShowModal((m) => !m),
-            500
-          );
-          // Run GetTodos here !!
-          Get();
-        }, 1500);
-      })
-      .catch((e) => {
-        //SHOW ERROR MODAL
-        console.log(e, e.name);
-      });
+    // axios
+    //   .post(dbLink, { task, team, folder, created, edited, notes, completed })
+    //   .then((res) => {
+    //     // Show toast of successful Entry, clear the Form timeout & close...
+    //     toast.success("Successfully added Todo");
+    //     setTimeout(() => {
+    //       clear();
+    //       setTimeout(
+    //         setShowModal((m) => !m),
+    //         500
+    //       );
+    //       // Run GetTodos here !!
+    //       Get();
+    //     }, 1500);
+    //   })
+    //   .catch((e) => {
+    //     //SHOW ERROR MODAL
+    //     console.log(e, e.name);
+    //   });
   };
   return (
     <div className="flex p-4 mx-6 mb-4 flex-shrink-0 flex-wrap items-center justify-between rounded-b-md border-t-2 border-neutral-100 border-opacity-50 dark:border-opacity-50">

@@ -13,7 +13,7 @@ const Table = () => {
   const [showUpdate, setShowUpdate] = useState(false);
   const [showCDel, setShowCDel] = useState(false);
   const [activeTask, set] = useState({});
-  const [editId, setEditId] = useState();
+  const [editId, setEditId] = useState(0);
   const [AllTodos, setAllTodos] = useContext(AppContext).Todos;
 
   const [newTask, setNewTask] = useState("");
@@ -96,7 +96,7 @@ const Table = () => {
                               set(Task);
                               setEditId(id);
                               console.log(id);
-                              console .log(editId);
+                              console.log(editId);
                               setTimeout(() => {
                                 setShowUpdate((upd) => !upd);
                               }, 50);

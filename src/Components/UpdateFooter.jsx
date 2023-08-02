@@ -1,33 +1,11 @@
-// import axios from "axios";
 import React, { useContext } from "react";
-// import toast, { Toaster } from "react-hot-toast";
 import { AppContext } from "../AppContext";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
 const UpdateFooter = ({ set, data }) => {
-  // useEffect(() => {}, [showModal]);
-  // const [
-  //   task,
-  //   setTask,
-  //   team,
-  //   setTeam,
-  //   folder,
-  //   setFolder,
-  //   created,
-  //   setCreated,
-  //   edited,
-  //   setEdited,
-  //   notes,
-  //   setNotes,
-  //   completed,
-  //   setDone,
-  // ] = useContext(AppContext).FormData;
-  // var clear = useContext(AppContext).clear;
-  // var Folders = useContext(AppContext).FolderList;
-
-  var dbLink = useContext(AppContext).link;
-  var Get = useContext(AppContext).get;
+  // var dbLink = useContext(AppContext).link;
+  // var Get = useContext(AppContext).get;
 
   const UpdateForm = () => {
     if (data.task === "" || data.task === " ") {
@@ -50,25 +28,6 @@ const UpdateFooter = ({ set, data }) => {
       });
       return;
     }
-    //   console.log(data);
-    //   //finding folder issue, created, edited
-    //   const dbLink = "https://localhost:7042/api/Todos/";
-    axios
-      .put(dbLink + `${data.id}/`, data)
-      .then(() => {
-        toast.success("Successfully Edited Todo");
-        setTimeout(() => {
-          setTimeout(
-            set((m) => !m),
-            500
-          );
-          Get();
-        }, 1500);
-      })
-      .catch((e) => {
-        //SHOW ERROR MODAL
-        console.log(e, e.name);
-      });
   };
 
   return (
@@ -76,7 +35,6 @@ const UpdateFooter = ({ set, data }) => {
       <button
         type="button"
         onClick={() => {
-          // clear();
           set((m) => !m);
         }}
         className="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"

@@ -1,20 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-const ModalTemp = ({
-  id,
-  heading,
-  body,
-  footer,
-  // closeFnc,
-  showModal,
-  setShowModal,
-}) => {
+const ModalTemp = ({ id, heading, body, footer, showModal, setShowModal }) => {
   if (showModal) {
     document?.getElementById("portal").classList.add("sized");
   } else {
     document?.getElementById("portal").classList.remove("sized");
   }
-  // console.log(showModal);
   return (
     <React.Fragment>
       {showModal
@@ -22,7 +13,6 @@ const ModalTemp = ({
             <React.Fragment>
               <div
                 className="portal h-full overflow-x-hidden overflow-y-auto outline-none bg-filter-blur-1 bg-opacity-50  backdrop-blur-sm bg-gray-200 backdrop-opacity-75"
-                // className="fixed left-0 top-0 z-[1055] hidden"
                 id={id}
                 aria-labelledby={`${id}Title`}
                 role="dialog"
@@ -43,7 +33,6 @@ const ModalTemp = ({
                         className="box-content rounded-none border-none p-1 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
                         aria-label="Close"
                         onClick={() => {
-                          // closeFnc();
                           setShowModal((m) => !m);
                         }}
                       >

@@ -9,27 +9,6 @@ import FormFooter from "./FormFooter";
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
-  // const [task, setTask] = useState("");
-  // const [team, setTeam] = useState("");
-  // const [folder, setFolder] = useState("");
-  // const [created, setCreated] = useState("");
-  // const [edited, setEdited] = useState("");
-  // const [notes, setNotes] = useState("");
-  // const [completed, setDone] = useState(false);
-
-  // const ClearForm = () => {
-  //   setTask("");
-  //   setTeam("");
-  //   setFolder("");
-  //   setCreated("");
-  //   setEdited("");
-  //   setNotes("");
-  // };
-
-  // const { Todos,FormData,link } = useContext(AppContext);
-
-  // console.log(Todos[0]);
-
   let date = new Date();
   const today = `${date.getDate()}/${
     date.getMonth() + 1
@@ -61,9 +40,9 @@ const Header = () => {
       </div>
 
       {/* 2nd FLOOR */}
-      <div className="py-2 px-6 flex items-right justify-evenly w-72 ml-auto mr--1">
+      {/* <div className="py-2 px-6 flex items-right justify-evenly w-72 ml-auto mr--1">
         <div className="flex mr-2.5">
-          <span className="header-defaults  hover:animate-pulse">
+          <span className="header-defaults hover:animate-pulse">
             <span className="[&>svg]:w-3.5 pr-0.5">
               <ChevronDown />
             </span>
@@ -98,7 +77,7 @@ const Header = () => {
             </span>
           </span>
         </div>
-      </div>
+      </div> */}
 
       {/* MODAL */}
       <ModalTemp

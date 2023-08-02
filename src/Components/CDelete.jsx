@@ -4,12 +4,9 @@ import { toast } from "react-hot-toast";
 import { AppContext } from "../AppContext";
 
 const CDelete = ({ tasked, set }) => {
-  // const [AllTodos, setAllTodos] = useContext(AppContext).Todos;
   const Get = useContext(AppContext).get;
   const dbLink = useContext(AppContext).link;
 
-  console.log(tasked);
-  // const dbLink = `https://localhost:7042/api/Todos/${tasked.id}`;
   const DeleteTodo = () => {
     axios
       .delete(dbLink + `${tasked.id}/`)
