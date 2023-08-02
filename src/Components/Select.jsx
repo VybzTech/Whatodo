@@ -7,11 +7,11 @@ const SelectComp = ({ name, list, val, change }) => {
 
   initTE({ Select });
   return (
-    <div className="w-80 mb-2.5">
+    <div className="mb-4 flex flex-col">
       <label
         htmlFor={name}
         name={name}
-        className="text-sm text-gray-400 mb-1.5 font-semibold"
+        className="text-md text-gray-400 mb-1.5 font-semibold"
       >
         {name}
       </label>
@@ -27,7 +27,7 @@ const SelectComp = ({ name, list, val, change }) => {
         }}
         value={val}
         // data-te-select-init
-        className="text-sm w-80 px-4 py-2 bg-white font-normal rounded rounded-md capitalize min-h-8 border border-1.5 bg-gray-50 hover:pointer-cursor placeholder:opacity-40 placeholder:tracking-wide focus:outline-none text-gray-500"
+        className="text-sm w-90 px-4 py-2 bg-white font-normal rounded rounded-md capitalize min-h-8 border border-1.5 bg-gray-50 hover:pointer-cursor placeholder:opacity-40 placeholder:tracking-wide focus:outline-none text-gray-500"
         // className="hover:pointer-cursor"
         // data-te-select-clear-button="true"
         // multiple

@@ -92,13 +92,13 @@ option {
 }
 
 .tale.actions {
-  width: 3.5rem;
+  @apply transition-all ease-in-out duration-300;
 }
 .tale.actions > svg {
-  @apply text-slate-400 w-5 h-5 transition-all ease-in-out;
+  @apply text-slate-400 w-5 h-5;
 }
 .tale.actions > svg:first-child {
-  @apply mr-2;
+  @apply mr-2 ml-1;
 }
 .tale.actions:hover {
   transform: scale(1.1);

@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="Navbar flex bg-white shadow-neutral-100 px-10 py-3.5 items-center justify-between">
       {/* LEFT SIDE */}
-      <span>
+      <span className="cursor-pointer" onClick={() => (window.location = "/")}>
         <h1 className="font-sans font-extrabold text-2xl capitalize text-zinc-800">
           wha
           <span className="text-zinc-700">todo</span>

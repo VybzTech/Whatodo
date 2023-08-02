@@ -14,7 +14,7 @@ const ModalTemp = ({
   } else {
     document?.getElementById("portal").classList.remove("sized");
   }
-  console.log(showModal);
+  // console.log(showModal);
   return (
     <React.Fragment>
       {showModal

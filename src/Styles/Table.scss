@@ -34,11 +34,12 @@ option {
   @apply px-4 py-3 mx-2 whitespace-nowrap;
 }
 .tale.actions {
-  width: 3.5rem;
+  // width: 3.5rem;
+  @apply transition-all ease-in-out duration-300;
   & > svg {
-    @apply text-slate-400 w-5 h-5 transition-all ease-in-out;
+    @apply text-slate-400 w-5 h-5;
     &:first-child {
-      @apply mr-2;
+      @apply mr-2 ml-1;
     }
   }
   &:hover {

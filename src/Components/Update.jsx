@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AppContext } from "../AppContext";
 import Input from "./Input";
@@ -6,34 +6,58 @@ import { toast } from "react-hot-toast";
 import ErrorPage from "./ErrorHandler";
 import SelectComp from "./Select";
 
-const Update = ({ tasked, set }) => {
-  const [
-    task,
-    setTask,
-    team,
-    setTeam,
-    folder,
-    setFolder,
-    created,
-    setCreated,
-    edited,
-    setEdited,
-    notes,
-    setNotes,
-    completed,
-    setDone,
-  ] = useContext(AppContext).FormData;
+const Update = ({ tasked , updateInfo}) => {
+  // const [
+  //   task,
+  //   setTask,
+  //   team,
+  //   setTeam,
+  //   folder,
+  //   setFolder,
+  //   created,
+  //   setCreated,
+  //   edited,
+  //   setEdited,
+  //   notes,
+  //   setNotes,
+  //   completed,
+  //   setDone,
+
+  
+  const { task, team, folder, created, edited, notes, completed } = tasked;
+  const { newTask, setNewTask
+    ,newTeam, setNewTeam
+    ,newFolder, setNewFolder
+    ,newCreated, setNewCreated
+    ,newEdited, setNewEdited
+    ,newNotes, setNewNotes
+    ,newCompleted, setNewCompleted } = updateInfo;
+
   var Teams = useContext(AppContext).TeamList;
   var Folders = useContext(AppContext).FolderList;
+  // console.log(setTask);
+  useEffect(() => {
+    setNewTask(task);
+    setNewTeam(team);
+    setNewFolder(folder);
+    setNewCreated(created);
+    setNewEdited(edited);
+    setNewNotes(notes);
+    setNewCompleted(completed);
+  }, [tasked]);
+
+
+
+  
   return (
     <div className="bg-slate-50 px-5 p-4">
       <form>
-        <div className="flex flex-col justify-between items-end">
+        <div className="flex flex-col justify-between">
           <ErrorPage>
             <Input
               name="Task"
-              val={tasked.task}
-              change={setTask}
+              val={newTask}
+              change={setNewTask}
               placeholder={"Recreate Task description..."}
             />
           </ErrorPage>
@@ -41,23 +65,23 @@ const Update = ({ tasked, set }) => {
             <SelectComp
               name="Team"
               list={Teams}
-              val={tasked.team}
-              change={setTeam}
+              val={newTeam}
+              change={setNewTeam}
             />
           </ErrorPage>
           <ErrorPage>
             <SelectComp
               name="Folder"
               list={Folders}
-              val={tasked.folder}
-              change={setFolder}
+              val={newFolder}
+              change={setNewFolder}
             />
           </ErrorPage>
           <ErrorPage>
             <Input
               name="Notes"
-              val={tasked.notes}
-              change={setNotes}
+              val={newNotes}
+              change={setNewNotes}
               placeholder={"Write some notes..."}
             />
           </ErrorPage>

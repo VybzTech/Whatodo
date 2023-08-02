@@ -42,7 +42,7 @@ const Header = () => {
   return (
     <div className="container">
       {/* 1st FLOOR */}
-      <div className="py-3 px-7 flex justify-between items-center">
+      <div className="py-5 px-7 flex justify-between items-center">
         <button
           className="flex items-center justify-between bg-transparent rounded rounded-md shadow-lg shadow-[0_1px_10px_0.5px_#aaa2] px-3.5 py-1 pt-1.5 uppercase text-slate-300 transition-all ease-in btn-text"
           type="button"
@@ -125,7 +125,7 @@ const Header = () => {
               // data={data}
               // clear={ClearForm}
               // showModal={showModal}
-              // setShowModal={setShowModal}
+              setShowModal={setShowModal}
               // get={get}
             />
           </>

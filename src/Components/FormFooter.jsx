@@ -1,12 +1,63 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { AppContext } from "../AppContext";
 
-const FormFooter = ({ data, clear, showModal, setShowModal, get }) => {
-  useEffect(() => {}, [showModal]);
+const FormFooter = ({ setShowModal }) => {
+  // { data, clear, showModal, setShowModal, get }
+
+  // value={{
+  //   Todos: [AllTodos, setAllTodos],
+  //   FormData: [
+  //     task,
+  //     setTask,
+  //     team,
+  //     setTeam,
+  //     folder,
+  //     setFolder,
+  //     created,
+  //     setCreated,
+  //     edited,
+  //     setEdited,
+  //     notes,
+  //     setNotes,
+  //     completed,
+  //     setDone,
+  //   ],
+  //   link: dbLink,
+  //   clear: ClearForm,
+  //   get: GetTodos,
+  //   TeamList:Teams,
+  //   FolderList:Folders
+  // }}
+
+  const [
+    task,
+    setTask,
+    team,
+    setTeam,
+    folder,
+    setFolder,
+    created,
+    setCreated,
+    edited,
+    setEdited,
+    notes,
+    setNotes,
+    completed,
+    setDone,
+  ] = useContext(AppContext).FormData;
+
+  var Teams = useContext(AppContext).TeamList;
+  var dbLink = useContext(AppContext).link;
+  var clear = useContext(AppContext).clear;
+  var Get = useContext(AppContext).get;
+  var Folders = useContext(AppContext).FolderList;
+
+  // useEffect(() => {}, [showModal]);
 
   const SendForm = () => {
-    if (data.task === "" || data.task === " ") {
+    if (task === "" || task === " ") {
       //SHOW TOAST OF EMPTY TASKNAME
       toast.error("The Task cannot be empty", {
         iconTheme: {
@@ -16,7 +67,7 @@ const FormFooter = ({ data, clear, showModal, setShowModal, get }) => {
       });
       return;
     }
-    if (data.team === "" || data.team === " ") {
+    if (team === "" || team === " ") {
       //SHOW TOAST OF NO TEAM ASSIGNED
       toast.error("Please assign the Task to a Team", {
         iconTheme: {
@@ -26,11 +77,10 @@ const FormFooter = ({ data, clear, showModal, setShowModal, get }) => {
       });
       return;
     }
-    console.log(data);
-    //finding folder issue, created, edited
-    const dbLink = "https://localhost:7042/api/Todos/";
+    console.log(task, team, folder, created, edited, notes, completed);
+    //finding  created, edited
     axios
-      .post(dbLink, data)
+      .post(dbLink, { task, team, folder, created, edited, notes, completed })
       .then((res) => {
         // Show toast of successful Entry, clear the Form timeout & close...
         toast.success("Successfully added Todo");
@@ -41,18 +91,17 @@ const FormFooter = ({ data, clear, showModal, setShowModal, get }) => {
             500
           );
           // Run GetTodos here !!
-          get();
+          Get();
         }, 1500);
       })
       .catch((e) => {
         //SHOW ERROR MODAL
         console.log(e, e.name);
       });
-    console.log(data);
   };
   return (
     <div className="flex p-4 mx-6 mb-4 flex-shrink-0 flex-wrap items-center justify-between rounded-b-md border-t-2 border-neutral-100 border-opacity-50 dark:border-opacity-50">
-      <Toaster position="top-right" reverseOrder={false} />
+      {/* <Toaster position="top-right" reverseOrder={false} /> */}
       <button
         type="button"
         onClick={() => {

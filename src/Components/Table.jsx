@@ -1,4 +1,4 @@
-import React, { useContext,  useState } from "react";
+import React, { useContext, useState } from "react";
 import Pagination from "./Pagination";
 import Pen from "../Icons/Pen";
 import Trash from "../Icons/Trash";
@@ -7,36 +7,39 @@ import ModalTemp from "./ModalTemp";
 import CDelete from "./CDelete";
 import Update from "./Update";
 import { AppContext } from "../AppContext";
+import UpdateFooter from "./UpdateFooter";
 
 const Table = () => {
   const [showUpdate, setShowUpdate] = useState(false);
   const [showCDel, setShowCDel] = useState(false);
   const [activeTask, set] = useState({});
-  // const togDel = () => {
-  //   setShowCDel((del) => !del);
-  // };
-  // const togUpdate = () => {
-  //   setShowUpdate((upd) => !upd);
-  // };
-const [AllTodos,setAllTodos]=useContext(AppContext).Todos;
-  //  const [
-  //   task,
-  //   setTask,
-  //   team,
-  //   setTeam,
-  //   folder,
-  //   setFolder,
-  //   created,
-  //   setCreated,
-  //   edited,
-  //   setEdited,
-  //   notes,
-  //   setNotes,
-  //   completed,
-  //   setDone,
-  // ] = useContext(AppContext).FormData;
+  const [editId, setEditId] = useState();
+  const [AllTodos, setAllTodos] = useContext(AppContext).Todos;
 
+  const [newTask, setNewTask] = useState("");
+  const [newTeam, setNewTeam] = useState("");
+  const [newFolder, setNewFolder] = useState("");
+  const [newCreated, setNewCreated] = useState("");
+  const [newEdited, setNewEdited] = useState("");
+  const [newNotes, setNewNotes] = useState("");
+  const [newCompleted, setNewCompleted] = useState(false);
 
+  const UpdateInfo = {
+    newTask,
+    setNewTask,
+    newTeam,
+    setNewTeam,
+    newFolder,
+    setNewFolder,
+    newCreated,
+    setNewCreated,
+    newEdited,
+    setNewEdited,
+    newNotes,
+    setNewNotes,
+    newCompleted,
+    setNewCompleted,
+  };
   return (
     <div>
       <div className="flex flex-col overflow-x-hidden">
@@ -49,7 +52,7 @@ const [AllTodos,setAllTodos]=useContext(AppContext).Todos;
                     <th scope="col" className="tale head tight">
                       S/N
                     </th>
-                    <th scope="col" className="tale head notes">
+                    <th scope="col" className="tale head">
                       Task
                     </th>
                     <th scope="col" className="tale head">
@@ -58,16 +61,16 @@ const [AllTodos,setAllTodos]=useContext(AppContext).Todos;
                     <th scope="col" className="tale head">
                       Folder
                     </th>
-                    <th scope="col" className="tale head word-tight">
+                    {/* <th scope="col" className="tale head word-tight">
                       Date Created
                     </th>
                     <th scope="col" className="tale head word-tight">
                       Date Edited
-                    </th>
-                    <th scope="col" className="tale head notes">
+                    </th> */}
+                    <th scope="col" className="tale head">
                       Notes
                     </th>
-                    <th scope="col" className="tale head notes">
+                    <th scope="col" className="tale head">
                       Actions
                     </th>
                   </tr>
@@ -81,16 +84,22 @@ const [AllTodos,setAllTodos]=useContext(AppContext).Todos;
                       >
                         <td className="tale data sn">{id + 1}.</td>
                         <td className="tale data">{Task.task}</td>
-                        <td className="tale data notes">{Task.team}</td>
+                        <td className="tale data">{Task.team}</td>
                         <td className="tale data">{Task.folder}</td>
-                        <td className="tale data word-tight">{Task.created}</td>
-                        <td className="tale data word-tight">{Task.edited}</td>
-                        <td className="tale data notes">{Task.notes}</td>
-                        <td className="tale notes flex items-center px-0.5 py-6 justify-center m-auto w-fit">
+                        {/* <td className="tale data word-tight">{Task.created}</td>
+                        <td className="tale data word-tight">{Task.edited}</td> */}
+                        <td className="tale data">{Task.notes}</td>
+                        <td className="tale flex items-center px-0.5 py-6 justify-center m-auto w-fit">
                           <span
                             className="tale actions"
                             onClick={() => {
-                              set(Task);setShowUpdate((upd) => !upd);
+                              set(Task);
+                              setEditId(id);
+                              console.log(id);
+                              console .log(editId);
+                              setTimeout(() => {
+                                setShowUpdate((upd) => !upd);
+                              }, 50);
                             }}
                           >
                             <Pen />
@@ -98,7 +107,8 @@ const [AllTodos,setAllTodos]=useContext(AppContext).Todos;
                           <span
                             className="tale actions"
                             onClick={() => {
-                              set(Task);setShowCDel((del) => !del);
+                              set(Task);
+                              setShowCDel((del) => !del);
                             }}
                           >
                             <Trash />
@@ -110,12 +120,9 @@ const [AllTodos,setAllTodos]=useContext(AppContext).Todos;
                     <tr>
                       <td></td>
                       <td></td>
-                      <td></td>
-                      <td></td>
                       <td className="py-8 font-bold text-md">
                         There are currently no Todos
                       </td>
-                      <td></td>
                       <td></td>
                       <td></td>
                     </tr>
@@ -131,10 +138,26 @@ const [AllTodos,setAllTodos]=useContext(AppContext).Todos;
         heading={"Update Todo"}
         body={
           <>
-            <Update tasked={activeTask} set={setShowUpdate}/>
+            <Update tasked={activeTask} updateInfo={UpdateInfo} />
           </>
         }
-        footer={<></>}
+        footer={
+          <>
+            <UpdateFooter
+              set={setShowUpdate}
+              data={{
+                editId,
+                newTask,
+                newTeam,
+                newFolder,
+                newCreated,
+                newEdited,
+                newNotes,
+                newCompleted,
+              }}
+            />
+          </>
+        }
         // closeFnc={togUpdate}
         showModal={showUpdate}
         setShowModal={setShowUpdate}
@@ -144,7 +167,7 @@ const [AllTodos,setAllTodos]=useContext(AppContext).Todos;
         heading={"Do you want to continue ? "}
         body={
           <>
-            <CDelete tasked={activeTask} set={setShowCDel}  />
+            <CDelete tasked={activeTask} set={setShowCDel} />
           </>
         }
         footer={<></>}

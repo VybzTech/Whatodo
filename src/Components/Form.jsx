@@ -3,19 +3,10 @@ import Input from "./Input";
 import SelectComp from "./Select";
 import ErrorPage from "./ErrorHandler";
 import { AppContext } from "../AppContext";
+import DatePick from "./DatePicker";
+import { useState } from "react";
 
-const Form = ({
-  date,
-  // task,
-  // setTask,
-  // team,
-  // setTeam,
-  // folder,
-  // setFolder,
-  // notes,
-  // setNotes,
-}) => {
-  
+const Form = () => {
   const [
     task,
     setTask,
@@ -33,28 +24,32 @@ const Form = ({
     setDone,
   ] = useContext(AppContext).FormData;
 
-  var Teams= useContext(AppContext).TeamList;
-  var Folders= useContext(AppContext).FolderList;
+  const [date, setDate] = useState("");
+  var Teams = useContext(AppContext).TeamList;
+  var Folders = useContext(AppContext).FolderList;
 
   return (
-    <div className="bg-slate-50 px-5 p-4">
+    <div className="bg-slate-50 bg-opacity-40 px-10 p-4 m-auto">
       <form>
-        <div className="flex justify-between items-end">
-          <ErrorPage>
-            <Input
-              name="Task"
-              val={task}
-              change={setTask}
-              placeholder={"Enter Task description..."}
-            />
-          </ErrorPage>
-          <div className="DOC pr-5 pb-2">
-            <p className="text-sm text-gray-500 mb-1.5">Date Created</p>
-            <p className="text-xs italic text-gray-400 ml-auto mr-1.5">
-              {date}.
-            </p>
-          </div>
-        </div>
+        {/* <div className="flex justify-between items-end"> */}
+        <ErrorPage>
+          <Input
+            name="Task"
+            val={task}
+            change={setTask}
+            placeholder={"Enter Task description..."}
+          />
+        </ErrorPage>
+        <ErrorPage>
+          <DatePick name={"Created"} val={created} change={setCreated} />
+          {/* <div className="DOC pr-5 pb-2"> */}
+          {/* <p className="text-sm text-gray-500 mb-1.5">Date Created</p> */}
+          {/* <p className="text-xs italic text-gray-400 ml-auto mr-1.5"> */}
+          {/* {date}. */}
+          {/* </p> */}
+          {/* </div> */}
+        </ErrorPage>
+        {/* </div> */}
         <ErrorPage>
           <SelectComp name="Team" list={Teams} val={team} change={setTeam} />
           {/* <SelectComp name="Team" list={Teams} val={team} change={setTeam} multiple={true}/> */}
@@ -80,10 +75,10 @@ const Form = ({
         {/* Dependencies */}
         {/* Sub tasks */}
         {/* Reminder */}
-        <div className="DOE">
+        {/* <div className="DOE">
           <p className="text-sm text-gray-500 mb-1.5">Date Edited</p>
           <p className="text-xs italic text-gray-400 ml-auto mr-1.5">{date}</p>
-        </div>
+        </div> */}
       </form>
     </div>
   );
