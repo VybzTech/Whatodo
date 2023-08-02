@@ -37,7 +37,6 @@ const DatePick = ({ name,change,val }) => {
         data-te-format="dd mmm, yyyy"
         // data-te-input-wrapper-init
       >
-        {/* <div className="flex flex-col my-2"> *}
         <input
           type="text"
           //min-h-[auto]  w-90 px-3 py-[0.32rem] leading-[1.6]
@@ -50,7 +49,6 @@ const DatePick = ({ name,change,val }) => {
         >
           Select a date
         </label>
-        {/* </div> *}
       </div> */}
     </div>
   );

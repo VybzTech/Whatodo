@@ -9,10 +9,16 @@ import FormFooter from "./FormFooter";
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
-  let date = new Date();
-  const today = `${date.getDate()}/${
-    date.getMonth() + 1
-  }/${date.getFullYear()}`;
+  // let date = new Date();
+  // const today = `${date.getDate()}/${
+  //   date.getMonth() + 1
+  // }/${date.getFullYear()}`;
+
+  // // setCreated(
+  // //   `${n.getDate() < 10 ? "0" + n.getDate() : n.getDate()}/${
+  // //     n.getMonth() + 1 < 10 ? "0" + (n.getMonth() + 1) : n.getMonth() + 1
+  // //   }/${n.getFullYear()}`
+  // // );
   // const todey = `${date.getDate()}/${
   //   date.getMonth() + 2
   // }/${date.getFullYear()}`;
@@ -86,7 +92,7 @@ const Header = () => {
         body={
           <>
             <Form
-              date={today}
+              // date={today}
               // task={task}
               // setTask={setTask}
               // team={team}

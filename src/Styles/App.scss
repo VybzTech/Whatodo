@@ -20,3 +20,11 @@
 .portal {
   height: 100vh;
 }
+
+*::-webkit-scrollbar {
+  background: rgba(200, 210, 250, .7);width: 15px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(64, 151, 228,.8);border-radius: 4px;
+  // background: blue;
+}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Input from "./Input";
 import SelectComp from "./Select";
 import ErrorPage from "./ErrorHandler";
@@ -22,6 +22,15 @@ const Form = () => {
 
   var Teams = useContext(AppContext).TeamList;
   var Folders = useContext(AppContext).FolderList;
+  let n = new Date();
+
+  useEffect(() => {
+    setCreated(
+      `${n.getDate() < 10 ? "0" + n.getDate() : n.getDate()}/${
+        n.getMonth() + 1 < 10 ? "0" + (n.getMonth() + 1) : n.getMonth() + 1
+      }/${n.getFullYear()}`
+    );
+  }, []);
 
   return (
     <div className="bg-slate-50 bg-opacity-40 px-10 p-4 m-auto">
@@ -35,7 +44,13 @@ const Form = () => {
           />
         </ErrorPage>
         <ErrorPage>
-          <DatePick name={"Created"} val={created} change={setCreated} />
+          {/* <Input
+            name="Priority"
+            val={task}
+            change={setTask}
+            placeholder={"Enter Task description..."}
+          /> */}
+          {/* <DatePick name={"Created"} val={created} change={setCreated} /> */}
         </ErrorPage>
         <ErrorPage>
           <SelectComp name="Team" list={Teams} val={team} change={setTeam} />

@@ -20,7 +20,7 @@ const Table = () => {
   const [newTeam, setNewTeam] = useState("");
   const [newFolder, setNewFolder] = useState("");
   const [newCreated, setNewCreated] = useState("");
-  const [newEdited, setNewEdited] = useState("");
+  // const [newEdited, setNewEdited] = useState("");
   const [newNotes, setNewNotes] = useState("");
   const [newCompleted, setNewCompleted] = useState(false);
 
@@ -33,8 +33,8 @@ const Table = () => {
     setNewFolder,
     newCreated,
     setNewCreated,
-    newEdited,
-    setNewEdited,
+    // newEdited,
+    // setNewEdited,
     newNotes,
     setNewNotes,
     newCompleted,
@@ -61,9 +61,10 @@ const Table = () => {
                     <th scope="col" className="tale head">
                       Folder
                     </th>
-                    {/* <th scope="col" className="tale head word-tight">
+                    <th scope="col" className="tale head word-tight">
                       Date Created
                     </th>
+                    {/*
                     <th scope="col" className="tale head word-tight">
                       Date Edited
                     </th> */}
@@ -86,8 +87,8 @@ const Table = () => {
                         <td className="tale data">{Task.task}</td>
                         <td className="tale data">{Task.team}</td>
                         <td className="tale data">{Task.folder}</td>
-                        {/* <td className="tale data word-tight">{Task.created}</td>
-                        <td className="tale data word-tight">{Task.edited}</td> */}
+                        <td className="tale data word-tight">{Task.created}</td>
+                        {/*  <td className="tale data word-tight">{Task.edited}</td> */}
                         <td className="tale data">{Task.notes}</td>
                         <td className="tale flex items-center px-0.5 py-6 justify-center m-auto w-fit">
                           <span
@@ -95,11 +96,10 @@ const Table = () => {
                             onClick={() => {
                               set(Task);
                               setEditId(id);
-                              console.log(id);
-                              console.log(editId);
+    console.log("setcreated,id,editID",id,editId);
                               setTimeout(() => {
                                 setShowUpdate((upd) => !upd);
-                              }, 50);
+                              }, 5);
                             }}
                           >
                             <Pen />
@@ -120,9 +120,11 @@ const Table = () => {
                     <tr>
                       <td></td>
                       <td></td>
+                      <td></td>
                       <td className="py-8 font-bold text-md">
                         There are currently no Todos
                       </td>
+                      <td></td>
                       <td></td>
                       <td></td>
                     </tr>
@@ -136,46 +138,33 @@ const Table = () => {
       <ModalTemp
         id={"ConfirmUpdate"}
         heading={"Update Todo"}
-        body={
-          <>
-            <Update tasked={activeTask} updateInfo={UpdateInfo} />
-          </>
-        }
+        body={<Update tasked={activeTask} updateInfo={UpdateInfo} />}
         footer={
-          <>
-            <UpdateFooter
-              set={setShowUpdate}
-              data={{
-                editId,
-                newTask,
-                newTeam,
-                newFolder,
-                newCreated,
-                newEdited,
-                newNotes,
-                newCompleted,
-              }}
-            />
-          </>
+          <UpdateFooter
+            set={setShowUpdate}
+            data={{
+              editId,
+              newTask,
+              newTeam,
+              newFolder,
+              newCreated,
+              newNotes,
+              newCompleted,
+            }}
+          />
         }
-        // closeFnc={togUpdate}
         showModal={showUpdate}
         setShowModal={setShowUpdate}
       />
       <ModalTemp
         id={"ConfirmDelete"}
         heading={"Do you want to continue ? "}
-        body={
-          <>
-            <CDelete tasked={activeTask} set={setShowCDel} />
-          </>
-        }
+        body={<CDelete tasked={activeTask} set={setShowCDel} />}
         footer={<></>}
-        // closeFnc={togDel}
         showModal={showCDel}
         setShowModal={setShowCDel}
       />
-      <Pagination />
+      {/* <Pagination /> */}
     </div>
     //   secondary -  className="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
     // tetiary  - classNameName="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"

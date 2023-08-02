@@ -20,7 +20,7 @@ const Navbar = () => {
       {/* RIGHT SIDE */}
       <div className="panel flex">
         {/* SEARCH INPUT */}
-        <div className="container p-1 pr-2.5 bg-blue-50 rounded rounded-2xl h-fit w-fit flex mr-6">
+        {/* <div className="container p-1 pr-2.5 bg-blue-50 rounded rounded-2xl h-fit w-fit flex mr-6">
           <input
             className="text-xs w-48 font-semibold rounded rounded-xl p-1.5 placeholder:opacity-40 focus:outline-none"
             type="text"
@@ -31,10 +31,10 @@ const Navbar = () => {
           <span className="nav-icons pl-1 ">
             <Search />
           </span>
-        </div>
+        </div> */}
         <div className="user font-sans ">
-          <p className="text-zinc-800 font-bold leading-tight ">John Doe</p>
-          <p className="text-blue-600 font-semibold text-sm leading-tight">
+          <p className="text-zinc-800 font-bold leading-tight ">Hello David</p>
+          <p className="text-blue-600 font-semibold text-small leading-tight">
             (User)
           </p>
         </div>
@@ -43,12 +43,12 @@ const Navbar = () => {
           src={pic}
           alt="Rounded avatar"
         />
-        <span className="nav-icons p-1">
+        {/* <span className="nav-icons p-1">
           <Bell />
         </span>
         <span className="nav-icons p-1 ml-2">
           <Setting6 />
-        </span>
+        </span> */}
         <span className="[&>svg]:w-5"></span>
       </div>
     </nav>

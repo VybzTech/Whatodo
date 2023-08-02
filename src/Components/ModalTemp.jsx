@@ -22,7 +22,7 @@ const ModalTemp = ({ id, heading, body, footer, showModal, setShowModal }) => {
                     <div className="p-4 flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-30  dark:border-opacity-50">
                       {/* <!--Modal title--> */}
                       <h5
-                        className="text-xl pl-3 font-semibold leading-tight text-neutral-800 dark:text-neutral-200"
+                        className="text-2xl pl-3 font-semibold  text-neutral-800 dark:text-neutral-200"
                         id={`${id}ScrollableLabel`}
                       >
                         {heading}

@@ -2,18 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AppContext } from "../AppContext";
 import Input from "./Input";
-import { toast } from "react-hot-toast";
 import ErrorPage from "./ErrorHandler";
 import SelectComp from "./Select";
 
 const Update = ({ tasked , updateInfo}) => {
   
-  const { task, team, folder, created, edited, notes, completed } = tasked;
+  const { task, team, folder, created,  notes, completed } = tasked;
   const { newTask, setNewTask
     ,newTeam, setNewTeam
     ,newFolder, setNewFolder
     ,newCreated, setNewCreated
-    ,newEdited, setNewEdited
     ,newNotes, setNewNotes
     ,newCompleted, setNewCompleted } = updateInfo;
 
@@ -24,7 +22,6 @@ const Update = ({ tasked , updateInfo}) => {
     setNewTeam(team);
     setNewFolder(folder);
     setNewCreated(created);
-    setNewEdited(edited);
     setNewNotes(notes);
     setNewCompleted(completed);
   }, [tasked]);

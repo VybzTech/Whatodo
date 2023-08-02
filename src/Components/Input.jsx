@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 const Input = ({ name, val, change, placeholder }) => {
   // useEffect(() => {}, [val]);
   return (
-    <div className="flex flex-col mb-4">
+    <div className="flex flex-col mb-6">
       <label
         htmlFor={name}
         name={name}
