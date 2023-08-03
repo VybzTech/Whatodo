@@ -9,6 +9,5 @@ namespace Whatodo.Models
         {
         }
         public DbSet<Todos> Todos { get; set; }
-    //public DbSet<Todos> Todos => Set<Todos>();
     }
 }

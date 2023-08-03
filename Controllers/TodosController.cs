@@ -18,7 +18,6 @@ namespace Whatodo.Controllers
 
         // GET ALL TODOS
         [HttpGet]
-        //public IEnumerable<string> Get() {  return new string[] { "value1", "value2" };}
         public async Task<ActionResult<IEnumerable<Todos>>> GetTodos()
         {
             if (_context.Todos == null)
@@ -48,7 +47,6 @@ namespace Whatodo.Controllers
 
         // POST api/<TodosController>    //  POST FROM BODY
         [HttpPost]
-        //public void Post([FromBody] string value)
         public async Task<ActionResult<Todos>> AddTodo(Todos value)
         {
             _context.Todos.Add(value);
@@ -60,7 +58,6 @@ namespace Whatodo.Controllers
         // UPDATE VALUES
         [HttpPut("{id}")]
         public async Task<ActionResult> EditTodo(int id, Todos Todo)
-        //void Put(int id, [FromBody] string value)
         {
             if (id != Todo.ID)
             {

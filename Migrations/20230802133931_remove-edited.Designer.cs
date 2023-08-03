@@ -11,8 +11,8 @@ using Whatodo.Models;
 namespace Whatodo.Migrations
 {
     [DbContext(typeof(TodosContext))]
-    [Migration("20230720133937_initial")]
-    partial class initial
+    [Migration("20230802133931_remove-edited")]
+    partial class removeedited
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,16 +38,17 @@ namespace Whatodo.Migrations
                     b.Property<string>("Created")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Edited")
+                    b.Property<string>("Folder")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Task")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Team")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TeamMember")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");

@@ -11,8 +11,8 @@ using Whatodo.Models;
 namespace Whatodo.Migrations
 {
     [DbContext(typeof(TodosContext))]
-    [Migration("20230721072652_props-reduced")]
-    partial class propsreduced
+    [Migration("20230723125853_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,26 @@ namespace Whatodo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<bool>("Completed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Created")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Edited")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Folder")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Task")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Team")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
