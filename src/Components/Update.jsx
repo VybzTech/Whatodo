@@ -1,19 +1,28 @@
-import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../AppContext";
 import Input from "./Input";
 import ErrorPage from "./ErrorHandler";
 import SelectComp from "./Select";
+import UpdateFooter from "./UpdateFooter";
 
-const Update = ({ tasked , updateInfo}) => {
-  
-  const { task, team, folder, created,  notes, completed } = tasked;
-  const { newTask, setNewTask
-    ,newTeam, setNewTeam
-    ,newFolder, setNewFolder
-    ,newCreated, setNewCreated
-    ,newNotes, setNewNotes
-    ,newCompleted, setNewCompleted } = updateInfo;
+const Update = ({ tasked, updateInfo,setShowUpdate ,editId}) => {
+  console.log("Tasked",tasked)
+  // console.log("Tasked",tasked)
+  const { task, team, folder, created, notes, completed } = tasked;
+  const {
+    newTask,
+    setNewTask,
+    newTeam,
+    setNewTeam,
+    newFolder,
+    setNewFolder,
+    newCreated,
+    setNewCreated,
+    newNotes,
+    setNewNotes,
+    newCompleted,
+    setNewCompleted,
+  } = updateInfo;
 
   var Teams = useContext(AppContext).TeamList;
   var Folders = useContext(AppContext).FolderList;
@@ -21,7 +30,8 @@ const Update = ({ tasked , updateInfo}) => {
     setNewTask(task);
     setNewTeam(team);
     setNewFolder(folder);
-    setNewCreated(created);
+    // CREATED VALUE WILL BE BECOME EDITED WHILST THE CREATED VALUE WILL BE CONSTANT
+    // setNewCreated(created);
     setNewNotes(notes);
     setNewCompleted(completed);
   }, [tasked]);
@@ -64,6 +74,20 @@ const Update = ({ tasked , updateInfo}) => {
           </ErrorPage>
         </div>
       </form>
+      <UpdateFooter
+            set={setShowUpdate}
+            data={{
+              // editId,
+              newTask,
+              newTeam,
+              newFolder,
+              newCreated,
+              newNotes,
+              newCompleted,
+            }}
+            editId={editId}
+            // setNewCreated={setNewCreated}
+          />
     </div>
   );
 };

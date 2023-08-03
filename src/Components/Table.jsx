@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
-import Pagination from "./Pagination";
-import Pen from "../Icons/Pen";
+import React, { useContext, useEffect, useState } from "react";
+// import Pagination from "./Pagination";
 import Trash from "../Icons/Trash";
 import ModalTemp from "./ModalTemp";
 // import axios from "axios";
@@ -8,12 +7,12 @@ import CDelete from "./CDelete";
 import Update from "./Update";
 import { AppContext } from "../AppContext";
 import UpdateFooter from "./UpdateFooter";
+import EditBtn from "./EditBtn";
 
 const Table = () => {
   const [showUpdate, setShowUpdate] = useState(false);
   const [showCDel, setShowCDel] = useState(false);
-  const [activeTask, set] = useState({});
-  const [editId, setEditId] = useState(0);
+  const [activeTask, setActiveTask] = useState({});
   const [AllTodos, setAllTodos] = useContext(AppContext).Todos;
 
   const [newTask, setNewTask] = useState("");
@@ -23,6 +22,8 @@ const Table = () => {
   // const [newEdited, setNewEdited] = useState("");
   const [newNotes, setNewNotes] = useState("");
   const [newCompleted, setNewCompleted] = useState(false);
+
+  const [editId, setEditId] = useState(0);
 
   const UpdateInfo = {
     newTask,
@@ -40,6 +41,25 @@ const Table = () => {
     newCompleted,
     setNewCompleted,
   };
+
+  // use all todos to set ID
+  // const pullInfo = (id) => {
+  //   // var editTask = AllTodos.filter((Task) => Task.task === newTask)[0];
+  //   var editTask = AllTodos[id];
+  //   console.log("editTask id", editTask?.id);
+  //   console.log("editTask created", editTask?.created);
+  //   // console.log("editTask", editTask, AllTodos);
+  //   setEditId(editTask?.id);
+  //   setNewCreated(editTask?.Created);
+  // };
+  // let editId;
+  // useEffect(() => {
+  //   // activeTask
+  //   editId = AllTodos.filter((Task) => Task.task === newTask)[0]?.id;
+  //   console.log(AllTodos.filter((Task) => Task.task === newTask)[0]);
+  //   console.log(editId);
+  // }, [activeTask]);
+
   return (
     <div>
       <div className="flex flex-col overflow-x-hidden">
@@ -91,23 +111,17 @@ const Table = () => {
                         {/*  <td className="tale data word-tight">{Task.edited}</td> */}
                         <td className="tale data">{Task.notes}</td>
                         <td className="tale flex items-center px-0.5 py-6 justify-center m-auto w-fit">
+                          <EditBtn
+                            setShowUpdate={setShowUpdate}
+                            set={setActiveTask}
+                            Task={Task}
+                            setEditId={setEditId}
+
+                          />
                           <span
                             className="tale actions"
                             onClick={() => {
-                              set(Task);
-                              setEditId(id);
-    console.log("setcreated,id,editID",id,editId);
-                              setTimeout(() => {
-                                setShowUpdate((upd) => !upd);
-                              }, 5);
-                            }}
-                          >
-                            <Pen />
-                          </span>
-                          <span
-                            className="tale actions"
-                            onClick={() => {
-                              set(Task);
+                              setActiveTask(Task);
                               setShowCDel((del) => !del);
                             }}
                           >
@@ -138,21 +152,15 @@ const Table = () => {
       <ModalTemp
         id={"ConfirmUpdate"}
         heading={"Update Todo"}
-        body={<Update tasked={activeTask} updateInfo={UpdateInfo} />}
-        footer={
-          <UpdateFooter
-            set={setShowUpdate}
-            data={{
-              editId,
-              newTask,
-              newTeam,
-              newFolder,
-              newCreated,
-              newNotes,
-              newCompleted,
-            }}
+        body={
+          <Update
+            tasked={activeTask}
+            updateInfo={UpdateInfo}
+            setShowUpdate={setShowUpdate}
+            editId={editId}
           />
         }
+        footer={<></>}
         showModal={showUpdate}
         setShowModal={setShowUpdate}
       />
