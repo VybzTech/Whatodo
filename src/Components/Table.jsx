@@ -1,12 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-// import Pagination from "./Pagination";
 import Trash from "../Icons/Trash";
 import ModalTemp from "./ModalTemp";
-// import axios from "axios";
 import CDelete from "./CDelete";
 import Update from "./Update";
 import { AppContext } from "../AppContext";
-import UpdateFooter from "./UpdateFooter";
 import EditBtn from "./EditBtn";
 
 const Table = () => {
@@ -19,7 +16,6 @@ const Table = () => {
   const [newTeam, setNewTeam] = useState("");
   const [newFolder, setNewFolder] = useState("");
   const [newCreated, setNewCreated] = useState("");
-  // const [newEdited, setNewEdited] = useState("");
   const [newNotes, setNewNotes] = useState("");
   const [newCompleted, setNewCompleted] = useState(false);
 
@@ -34,31 +30,11 @@ const Table = () => {
     setNewFolder,
     newCreated,
     setNewCreated,
-    // newEdited,
-    // setNewEdited,
     newNotes,
     setNewNotes,
     newCompleted,
     setNewCompleted,
   };
-
-  // use all todos to set ID
-  // const pullInfo = (id) => {
-  //   // var editTask = AllTodos.filter((Task) => Task.task === newTask)[0];
-  //   var editTask = AllTodos[id];
-  //   console.log("editTask id", editTask?.id);
-  //   console.log("editTask created", editTask?.created);
-  //   // console.log("editTask", editTask, AllTodos);
-  //   setEditId(editTask?.id);
-  //   setNewCreated(editTask?.Created);
-  // };
-  // let editId;
-  // useEffect(() => {
-  //   // activeTask
-  //   editId = AllTodos.filter((Task) => Task.task === newTask)[0]?.id;
-  //   console.log(AllTodos.filter((Task) => Task.task === newTask)[0]);
-  //   console.log(editId);
-  // }, [activeTask]);
 
   return (
     <div>
@@ -84,10 +60,6 @@ const Table = () => {
                     <th scope="col" className="tale head word-tight">
                       Date Created
                     </th>
-                    {/*
-                    <th scope="col" className="tale head word-tight">
-                      Date Edited
-                    </th> */}
                     <th scope="col" className="tale head">
                       Notes
                     </th>
@@ -108,7 +80,6 @@ const Table = () => {
                         <td className="tale data">{Task.team}</td>
                         <td className="tale data">{Task.folder}</td>
                         <td className="tale data word-tight">{Task.created}</td>
-                        {/*  <td className="tale data word-tight">{Task.edited}</td> */}
                         <td className="tale data">{Task.notes}</td>
                         <td className="tale flex items-center px-0.5 py-6 justify-center m-auto w-fit">
                           <EditBtn
@@ -116,7 +87,6 @@ const Table = () => {
                             set={setActiveTask}
                             Task={Task}
                             setEditId={setEditId}
-
                           />
                           <span
                             className="tale actions"
@@ -172,7 +142,6 @@ const Table = () => {
         showModal={showCDel}
         setShowModal={setShowCDel}
       />
-      {/* <Pagination /> */}
     </div>
     //   secondary -  className="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
     // tetiary  - classNameName="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"

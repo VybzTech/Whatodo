@@ -3,8 +3,6 @@ import Input from "./Input";
 import SelectComp from "./Select";
 import ErrorPage from "./ErrorHandler";
 import { AppContext } from "../AppContext";
-import DatePick from "./DatePicker";
-import { useState } from "react";
 
 const Form = () => {
   const [
@@ -43,15 +41,7 @@ const Form = () => {
             placeholder={"Enter Task description..."}
           />
         </ErrorPage>
-        <ErrorPage>
-          {/* <Input
-            name="Priority"
-            val={task}
-            change={setTask}
-            placeholder={"Enter Task description..."}
-          /> */}
-          {/* <DatePick name={"Created"} val={created} change={setCreated} /> */}
-        </ErrorPage>
+        <ErrorPage></ErrorPage>
         <ErrorPage>
           <SelectComp name="Team" list={Teams} val={team} change={setTeam} />
         </ErrorPage>

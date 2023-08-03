@@ -2,7 +2,6 @@ import React from "react";
 import Bell from "../Icons/Bell";
 import Setting6 from "../Icons/Settings6";
 import Search from "../Icons/Search";
-// import img from "../Images/a40e4d1afec5e099a8d106cac45ac9ef.jpg";
 import pic from "../Images/e3c0b57e39b9038b5a33a28d7953f24d.jpg";
 const Navbar = () => {
   return (

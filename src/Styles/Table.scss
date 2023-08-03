@@ -34,7 +34,6 @@ option {
   @apply px-4 py-3 mx-2 whitespace-nowrap;
 }
 .tale.actions {
-  // width: 3.5rem;
   @apply transition-all ease-in-out duration-300;
   & > svg {
     @apply text-slate-400 w-5 h-5;
@@ -45,7 +44,6 @@ option {
   &:hover {
     transform: scale(1.1);
     cursor: pointer;
-    // @apply zoom-1.1;
     & > svg {
       @apply text-blue-600;
     }
@@ -66,7 +64,3 @@ option {
 .tale.row {
   border: 10px solid rgb(241 245 249);
 }
-
-// .span2 {
-//   grid-column: span 2;
-// }

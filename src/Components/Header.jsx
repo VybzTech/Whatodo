@@ -1,29 +1,11 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import Plus from "../Icons/Plus";
-import ChevronDown from "../Icons/ChevDown";
-import Funnel from "../Icons/Funnel";
-import ChevUpDown from "../Icons/ChevUpDown";
 import ModalTemp from "./ModalTemp";
 import Form from "./Form";
 import FormFooter from "./FormFooter";
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
-  // let date = new Date();
-  // const today = `${date.getDate()}/${
-  //   date.getMonth() + 1
-  // }/${date.getFullYear()}`;
-
-  // // setCreated(
-  // //   `${n.getDate() < 10 ? "0" + n.getDate() : n.getDate()}/${
-  // //     n.getMonth() + 1 < 10 ? "0" + (n.getMonth() + 1) : n.getMonth() + 1
-  // //   }/${n.getFullYear()}`
-  // // );
-  // const todey = `${date.getDate()}/${
-  //   date.getMonth() + 2
-  // }/${date.getFullYear()}`;
-  // const data = { task, team, folder, today, todey, notes, completed }=;
-
   return (
     <div className="container">
       {/* 1st FLOOR */}
@@ -89,33 +71,8 @@ const Header = () => {
       <ModalTemp
         id={"CreateTodoForm"}
         heading={"Create New Todo"}
-        body={
-          <>
-            <Form
-              // date={today}
-              // task={task}
-              // setTask={setTask}
-              // team={team}
-              // setTeam={setTeam}
-              // folder={folder}
-              // setFolder={setFolder}
-              // notes={notes}
-              // setNotes={setNotes}
-            />
-          </>
-        }
-        footer={
-          <>
-            <FormFooter
-              // data={data}
-              // clear={ClearForm}
-              // showModal={showModal}
-              setShowModal={setShowModal}
-              // get={get}
-            />
-          </>
-        }
-        // closeFnc={ClearForm}
+        body={<Form />}
+        footer={<FormFooter setShowModal={setShowModal} />}
         showModal={showModal}
         setShowModal={setShowModal}
       />

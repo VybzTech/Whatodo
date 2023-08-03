@@ -1,18 +1,14 @@
 // eslint-disable-next-line react-hooks/exhaustive-deps
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
 const UpdateFooter = ({ set, data ,editId}) => {
-  // const [AllTodos, setAllTodos] = useContext(AppContext).Todos;
   var dbLink = useContext(AppContext).link;
   var Get = useContext(AppContext).get;
-//   // const [editId, setEditId] = useState(0);
-//   // const [apiTask, setApi] = useState({});
   const [disabled, setDisabled] = useState(false);
   const {
-    // editId,
     newTask,
     newTeam,
     newFolder,
@@ -20,12 +16,6 @@ const UpdateFooter = ({ set, data ,editId}) => {
     newNotes,
     newCompleted,
   } = data;
-  useEffect(() => {
-    console.log(editId)
-//     // setEditId(AllTodos.filter((Task) => Task.task === newTask)[0]?.id);
-//     // console.log(AllTodos.filter((Task) => Task.task === newTask)[0]);
-//     // console.log(editId);
-  }, []);
 
   const UpdateForm = () => {
     if (newTask === "" || newTask === " ") {
@@ -49,8 +39,6 @@ const UpdateFooter = ({ set, data ,editId}) => {
       return;
     }
     //IF ALL REQ ARE MET, SET THE ID & DATA THEN SEND REQUEST
-    // setEditId(apiTask?.id);
-    // setNewCreated(apiTask?.Created);
     const editData = {
       ID: editId,
       Task: newTask,
@@ -69,7 +57,6 @@ const UpdateFooter = ({ set, data ,editId}) => {
           // Show toast of successful Entry, clear the Form timeout & close...
           toast.success("Todo update successful");
           setTimeout(() => {
-            // clear();
             setTimeout(
               set((m) => !m),
               100

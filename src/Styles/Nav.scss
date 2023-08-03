@@ -19,9 +19,6 @@
 .mr--1 {
   margin-right: -1rem;
 }
-// .mr--3 {
-//   margin-right: -3rem;
-// }
 .nav-icons {
   @apply m-auto w-fit relative transition-all duration-500 ease-in-out;
   & > svg {
@@ -34,15 +31,9 @@
 .round-new {
   border-radius: 6px;
 }
-// .hover\:bg-slate-200:hover
 .hover\:animate-once:hover {
   animation-iteration-count: 1;
 }
-// .whiten:hover {
-//   & > span {
-//     @apply text-gray-500;
-//   }
-// }
 .header-defaults {
   @apply flex items-center pl-1 pr-2 cursor-pointer round-new transition-all ease-in-out hover:bg-zinc-100;
 }

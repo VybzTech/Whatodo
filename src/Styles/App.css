@@ -149,6 +149,13 @@ option {
 }
 
 *::-webkit-scrollbar-thumb {
+  width: 14px;
   background: rgba(64, 151, 228, 0.8);
   border-radius: 4px;
+  cursor: grab;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  border-radius: 5px;
+  background: blue;
 }

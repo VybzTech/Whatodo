@@ -6,8 +6,6 @@ import SelectComp from "./Select";
 import UpdateFooter from "./UpdateFooter";
 
 const Update = ({ tasked, updateInfo,setShowUpdate ,editId}) => {
-  console.log("Tasked",tasked)
-  // console.log("Tasked",tasked)
   const { task, team, folder, created, notes, completed } = tasked;
   const {
     newTask,
@@ -31,7 +29,7 @@ const Update = ({ tasked, updateInfo,setShowUpdate ,editId}) => {
     setNewTeam(team);
     setNewFolder(folder);
     // CREATED VALUE WILL BE BECOME EDITED WHILST THE CREATED VALUE WILL BE CONSTANT
-    // setNewCreated(created);
+    setNewCreated(created);
     setNewNotes(notes);
     setNewCompleted(completed);
   }, [tasked]);
@@ -77,7 +75,6 @@ const Update = ({ tasked, updateInfo,setShowUpdate ,editId}) => {
       <UpdateFooter
             set={setShowUpdate}
             data={{
-              // editId,
               newTask,
               newTeam,
               newFolder,
@@ -86,7 +83,6 @@ const Update = ({ tasked, updateInfo,setShowUpdate ,editId}) => {
               newCompleted,
             }}
             editId={editId}
-            // setNewCreated={setNewCreated}
           />
     </div>
   );

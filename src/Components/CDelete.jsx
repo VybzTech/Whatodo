@@ -12,7 +12,6 @@ const CDelete = ({ tasked, set }) => {
       .delete(dbLink + `${tasked.id}/`)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res);
           toast.success("Successfully deleted Task!", {
             iconTheme: {
               primary: "#ff3333",
